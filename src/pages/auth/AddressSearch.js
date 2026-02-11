@@ -164,7 +164,7 @@ export default function AddressSearch() {
     <header className="authPageHeaderStyle">
       <h2>내 동네 찾기</h2>
     </header>
-      <main>
+      <main className="authPageMainStyle">
         {/* ✅ 검색창 */}
         <form onSubmit={onSubmit} className="addressSearchBox">
           <label htmlFor="searchBox">검색</label>
