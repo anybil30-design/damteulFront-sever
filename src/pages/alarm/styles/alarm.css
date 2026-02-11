@@ -1,0 +1,40 @@
+.alarm {
+  margin-top: 60px;
+  margin-bottom: 2rem;
+}
+.alarm .myTabMenu {
+  margin-bottom: 1rem;
+}
+.alarm .myTabMenu li {
+  width: 100%;
+}
+.alarm .alarmList {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+  height: 3rem;
+  color: #1A1C19;
+  border-bottom: 1px solid #D7D7D7;
+}
+.alarm .alarmList svg {
+  font-size: 24px;
+}
+.alarm .alarmList p {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.alarm .alarmList span {
+  margin-left: auto;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.alarm .alarmList:last-child {
+  border-bottom: none;
+}/*# sourceMappingURL=alarm.css.map */

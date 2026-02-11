@@ -1,0 +1,16 @@
+.adminIndex {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+.adminIndex .adminSidebar {
+  width: 260px;
+  background-color: #fff;
+  border-right: 1px solid #D7D7D7;
+}
+.adminIndex .adminPage {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #F2F5F2;
+}/*# sourceMappingURL=AdminIndex.css.map */

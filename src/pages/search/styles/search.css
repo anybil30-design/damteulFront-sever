@@ -1,0 +1,84 @@
+.search {
+  margin-top: 80px;
+}
+.search .searchBar {
+  position: relative;
+}
+.search .searchBar [type=search] {
+  -webkit-appearance: textfield;
+}
+.search .searchBar [type=search]::-webkit-search-cancel-button,
+.search .searchBar [type=search]::-webkit-search-results-button {
+  display: none;
+}
+.search .searchBar label {
+  display: none;
+}
+.search .searchBar input {
+  width: 100%;
+  height: 3rem;
+  border-radius: 25px;
+  border: none;
+  border: 2px solid #58A563;
+  text-indent: 2rem;
+  caret-color: transparent;
+}
+.search .searchBar .searchBtn {
+  background: none;
+  border: none;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.search .searchBar .searchBtn svg {
+  font-size: 20px;
+  fill: #1A1C19;
+  cursor: pointer;
+}
+.search .myTabMenu {
+  border-bottom: 2px solid #D7D7D7;
+}
+.search .myTabMenu > li {
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  width: 42%;
+}
+.search .myTabMenu > li.active {
+  margin-bottom: -2px;
+  border-bottom: 2px solid #1A1C19;
+  background: none !important;
+  color: #1A1C19 !important;
+}
+.search .searchTab > p {
+  margin: 1rem auto;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+}
+.search .recentSearch {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-left: 1rem;
+  gap: 1rem;
+  border-bottom: 1px solid #D7D7D7;
+  height: 3rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #6B6B6B;
+}
+.search .recentSearch svg {
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  fill: #6B6B6B;
+}/*# sourceMappingURL=search.css.map */

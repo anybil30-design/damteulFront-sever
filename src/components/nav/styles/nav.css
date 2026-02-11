@@ -1,0 +1,55 @@
+@charset "UTF-8";
+.naviContainer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0px -5px 15px -9px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  /* 아이폰 하단 홈 바 */
+  height: calc(5rem + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  box-sizing: border-box;
+}
+.naviContainer .naviInner {
+  width: 100%;
+  max-width: 767px;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navItem {
+  text-decoration: none;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6B6B6B;
+}
+.navItem.active {
+  color: #58A563;
+}
+.navItem.active .navLabel {
+  font-weight: 700;
+}
+
+.naviWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.naviWrap .navIcon {
+  font-size: 1.5rem;
+}
+.naviWrap .navLabel {
+  font-family: "Inter", sans-serif;
+  font-size: 0.5625rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+}/*# sourceMappingURL=nav.css.map */

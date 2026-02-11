@@ -1,0 +1,237 @@
+.deletePopup {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.deletePopup .deleteModal {
+  width: 92%;
+  height: 12rem;
+  background: #fff;
+  border-radius: 20px;
+  text-align: center;
+  vertical-align: center;
+}
+.deletePopup .deleteModal > p {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.deletePopup .deleteModal .deleteBtn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.deletePopup .deleteModal .deleteBtn > button {
+  width: 40%;
+  min-width: 9rem;
+  height: 50px;
+  border-radius: 8px;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.deletePopup .deleteModal .deleteBtn > button:first-child {
+  background: #D7D7D7;
+  color: #6B6B6B;
+}
+.deletePopup .deleteModal .deleteBtn > button:last-child {
+  background: #58A563;
+  color: #fff;
+}
+
+.bottomBtn {
+  display: flex;
+  justify-content: center;
+  background: #F2F5F2;
+  gap: 10px;
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  bottom: 0px;
+  left: 0px;
+  box-shadow: 0px -5px 15px -9px rgba(0, 0, 0, 0.25);
+  padding-top: 10px;
+}
+.bottomBtn button:first-child, .bottomBtn a:first-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #6B6B6B;
+  cursor: pointer;
+}
+.bottomBtn button:last-child, .bottomBtn a:last-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #58A563;
+  cursor: pointer;
+}
+
+.bodyParent:has(.payment) {
+  background-color: #fff !important;
+}
+
+.payment {
+  margin-top: 80px;
+  padding-bottom: 100px;
+}
+.payment > div {
+  margin: 1rem 0;
+}
+.payment h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+.payment .productOrder .productOrderForm {
+  border: 1px solid #D7D7D7;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0px;
+}
+.payment .productOrder .productOrderForm img {
+  margin-left: 1rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 3px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.payment .productOrder .productOrderForm p, .payment .productOrder .productOrderForm span {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.payment .productOrder .productOrderForm span {
+  color: #6B6B6B;
+}
+.payment .deliveryAddress .myAddress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 2rem;
+}
+.payment .deliveryAddress .myAddress span {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.payment .deliveryAddress .myAddressInput label {
+  display: none;
+}
+.payment .deliveryAddress .myAddressInput input {
+  width: 100%;
+  height: 50px;
+  padding: 10px 0;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  text-indent: 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  height: 5rem;
+  padding-bottom: 4rem;
+}
+.payment .paymentMethod {
+  display: flex;
+  flex-direction: column;
+}
+.payment .paymentMethod p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+}
+.payment .paymentMethod p [type=radio] {
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: #58A563;
+}
+.payment .paymentAmount p {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.payment .paymentAmount p:nth-of-type(3) {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.payment .paymentAmount hr {
+  border: none;
+  border-top: 1px solid #D7D7D7;
+}
+.payment .paymentAmount .moreInfo {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.payment button {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #E06868;
+  width: 100%;
+}/*# sourceMappingURL=payment.css.map */

@@ -1,0 +1,209 @@
+.deletePopup {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.deletePopup .deleteModal {
+  width: 92%;
+  height: 12rem;
+  background: #fff;
+  border-radius: 20px;
+  text-align: center;
+  vertical-align: center;
+}
+.deletePopup .deleteModal > p {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.deletePopup .deleteModal .deleteBtn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.deletePopup .deleteModal .deleteBtn > button {
+  width: 40%;
+  min-width: 9rem;
+  height: 50px;
+  border-radius: 8px;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.deletePopup .deleteModal .deleteBtn > button:first-child {
+  background: #D7D7D7;
+  color: #6B6B6B;
+}
+.deletePopup .deleteModal .deleteBtn > button:last-child {
+  background: #58A563;
+  color: #fff;
+}
+
+.bottomBtn {
+  display: flex;
+  justify-content: center;
+  background: #F2F5F2;
+  gap: 10px;
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  bottom: 0px;
+  left: 0px;
+  box-shadow: 0px -5px 15px -9px rgba(0, 0, 0, 0.25);
+  padding-top: 10px;
+}
+.bottomBtn button:first-child, .bottomBtn a:first-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #6B6B6B;
+  cursor: pointer;
+}
+.bottomBtn button:last-child, .bottomBtn a:last-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #58A563;
+  cursor: pointer;
+}
+
+.supportList {
+  margin-top: 60px;
+}
+.supportList ul li {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+  cursor: pointer;
+}
+.supportList ul li hr {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  margin-top: 0;
+  margin-bottom: 0;
+  border: none;
+  background-color: #D7D7D7;
+  height: 1px;
+}
+.supportList ul li .question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 60px;
+}
+.supportList ul li .question .setting {
+  position: relative;
+}
+.supportList ul li .question .setting p {
+  line-height: 30px !important;
+}
+.supportList ul li .question .setting p:last-child {
+  font-family: "Inter", sans-serif;
+  font-size: 0.5625rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  position: absolute;
+  top: 1rem;
+}
+.supportList ul li .question .setting span {
+  color: #58A563;
+}
+.supportList ul li span {
+  width: 4rem;
+}
+.supportList ul li h4 {
+  margin-right: auto;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+}
+.supportList ul li svg {
+  font-family: "Inter", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  fill: #6B6B6B;
+  transition: transform 0.5s ease;
+}
+.supportList ul li svg.transition {
+  transform: rotate(180deg);
+}
+.supportList ul li .questionContent {
+  margin-left: 4rem;
+  margin-right: 1.5rem;
+}
+.supportList ul li .questionContent p {
+  margin-bottom: 1rem;
+}
+.supportList ul li .questionContent span {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #6B6B6B;
+}
+.supportList ul li .faqAnswer {
+  margin-top: 0.5rem;
+  background: #fff;
+  width: 100vw;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  border-top: 1px solid #D7D7D7;
+}
+.supportList ul li .faqAnswer p {
+  margin-left: 2rem;
+  margin-right: 1.5rem;
+}
+.supportList ul li .faqAnswer p:last-child {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #6B6B6B;
+  margin-top: 1rem;
+}/*# sourceMappingURL=supportList.css.map */

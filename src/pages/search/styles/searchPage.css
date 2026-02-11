@@ -1,0 +1,128 @@
+.searchPage {
+  width: 100%;
+  padding-top: 60px;
+}
+.searchPage form {
+  position: relative;
+  height: 100%;
+}
+.searchPage form label {
+  display: none;
+}
+.searchPage form input {
+  width: 100%;
+  height: 45px;
+  border-radius: 50px;
+  border: 2px solid #58A563;
+  text-indent: 20px;
+}
+.searchPage form button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  font-size: 18px;
+}
+.searchPage .searchToggle {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+}
+.searchPage .searchToggle li {
+  width: 50%;
+}
+.searchPage .searchToggle li button {
+  width: 100%;
+  height: 50px;
+  border: none;
+  background-color: #F2F5F2;
+  color: #ccc;
+}
+.searchPage .searchToggle::before {
+  content: "";
+  width: 100%;
+  background-color: #ccc;
+  height: 1px;
+  position: absolute;
+  top: 50px;
+  padding: 0 30px;
+  transform: translateX(-30px);
+}
+.searchPage .searchToggle::after {
+  content: "";
+  background-color: #1A1C19;
+  height: 2px;
+  width: 50%;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  transform: translateX(0%);
+  transition: transform 0.3s;
+}
+.searchPage .searchToggle.leftAct::after {
+  transform: translateX(0%);
+}
+.searchPage .searchToggle.leftAct .goodsBtn {
+  color: #1A1C19;
+}
+.searchPage .searchToggle.rightAct::after {
+  transform: translateX(100%);
+}
+.searchPage .searchToggle.rightAct .nanumBtn {
+  color: #1A1C19;
+}
+.searchPage .searchRecent {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  align-items: end;
+  padding-bottom: 20px;
+}
+.searchPage .searchRecent p {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.searchPage .searchRecent button {
+  border: none;
+  background: none;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  text-decoration: underline;
+}
+.searchPage .searchContent {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
+}
+.searchPage .searchContent::after {
+  content: "";
+  position: absolute;
+  padding: 0 30px;
+  transform: translateX(-30px);
+  left: 0px;
+  top: 50px;
+  background-color: #ccc;
+  width: 100%;
+  height: 1px;
+}
+.searchPage .searchContent:last-child::after {
+  content: "";
+}
+.searchPage .searchContent svg {
+  font-size: 16px;
+}
+.searchPage .searchContent span {
+  width: 95%;
+}/*# sourceMappingURL=searchPage.css.map */

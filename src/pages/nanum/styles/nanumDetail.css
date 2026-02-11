@@ -1,0 +1,180 @@
+@charset "UTF-8";
+.deletePopup {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.deletePopup .deleteModal {
+  width: 92%;
+  height: 12rem;
+  background: #fff;
+  border-radius: 20px;
+  text-align: center;
+  vertical-align: center;
+}
+.deletePopup .deleteModal > p {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.deletePopup .deleteModal .deleteBtn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.deletePopup .deleteModal .deleteBtn > button {
+  width: 40%;
+  min-width: 9rem;
+  height: 50px;
+  border-radius: 8px;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.deletePopup .deleteModal .deleteBtn > button:first-child {
+  background: #D7D7D7;
+  color: #6B6B6B;
+}
+.deletePopup .deleteModal .deleteBtn > button:last-child {
+  background: #58A563;
+  color: #fff;
+}
+
+.bottomBtn {
+  display: flex;
+  justify-content: center;
+  background: #F2F5F2;
+  gap: 10px;
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  bottom: 0px;
+  left: 0px;
+  box-shadow: 0px -5px 15px -9px rgba(0, 0, 0, 0.25);
+  padding-top: 10px;
+}
+.bottomBtn button:first-child, .bottomBtn a:first-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #6B6B6B;
+  cursor: pointer;
+}
+.bottomBtn button:last-child, .bottomBtn a:last-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #58A563;
+  cursor: pointer;
+}
+
+.nanumDetail {
+  margin-top: 40px;
+  padding-bottom: 150px;
+}
+.nanumDetail .nanumBtnCustom > button {
+  width: 90% !important;
+  background: #E06868 !important;
+}
+
+.clearedModalWrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.clearedModalWrapper .clearedModal {
+  width: 90%;
+  height: 120px;
+  border-radius: 8px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.clearedModalWrapper .clearedModal > p {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.clearedModalWrapper .clearedModal > button {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #58A563;
+  width: 90%;
+}
+
+/* 게시자 정보(상단) 공통 스타일: 작은 레벨 아이콘 20x20 고정 */
+.postUser {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.postUser > img:first-of-type {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.postUser > img:last-of-type {
+  width: 20px;
+  height: 20px;
+  margin-left: 0;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: block;
+  border-radius: 0;
+}/*# sourceMappingURL=nanumDetail.css.map */

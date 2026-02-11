@@ -1,0 +1,339 @@
+@charset "UTF-8";
+.deletePopup {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.deletePopup .deleteModal {
+  width: 92%;
+  height: 12rem;
+  background: #fff;
+  border-radius: 20px;
+  text-align: center;
+  vertical-align: center;
+}
+.deletePopup .deleteModal > p {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.deletePopup .deleteModal .deleteBtn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.deletePopup .deleteModal .deleteBtn > button {
+  width: 40%;
+  min-width: 9rem;
+  height: 50px;
+  border-radius: 8px;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.deletePopup .deleteModal .deleteBtn > button:first-child {
+  background: #D7D7D7;
+  color: #6B6B6B;
+}
+.deletePopup .deleteModal .deleteBtn > button:last-child {
+  background: #58A563;
+  color: #fff;
+}
+
+.bottomBtn {
+  display: flex;
+  justify-content: center;
+  background: #F2F5F2;
+  gap: 10px;
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  bottom: 0px;
+  left: 0px;
+  box-shadow: 0px -5px 15px -9px rgba(0, 0, 0, 0.25);
+  padding-top: 10px;
+}
+.bottomBtn button:first-child, .bottomBtn a:first-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #6B6B6B;
+  cursor: pointer;
+}
+.bottomBtn button:last-child, .bottomBtn a:last-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #58A563;
+  cursor: pointer;
+}
+
+.commTagPage {
+  width: 100%;
+  height: 100%;
+  min-height: 100dvh;
+  max-width: 767px;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: #1A1C19;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  /* 상단 안내 문구 */
+  /* 헤더 스타일 */
+  /* 2. 이미지 컨테이너 */
+  /* 3. 하단 버튼 바 (기존 bottomBtn 믹스인 활용) */
+  /* 모달 스타일 (config 변수 적용) */
+}
+.commTagPage .tagInstruction {
+  flex-shrink: 0;
+  text-align: center;
+  padding: 2rem 0;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #fff;
+  line-height: 1.5;
+}
+.commTagPage .tagHeader {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+}
+.commTagPage .tagHeader .title {
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+}
+.commTagPage .tagHeader button {
+  background: none;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.commTagPage .tagHeader button.doneBtn {
+  color: #58A563;
+  font-weight: 700;
+}
+.commTagPage .tagImageContainer {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  /* 태그 레이블 */
+}
+.commTagPage .tagImageContainer::-webkit-scrollbar {
+  width: 0;
+}
+.commTagPage .tagImageContainer .fullImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.commTagPage .tagImageContainer .addedTagMarker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.commTagPage .tagImageContainer .addedTagMarker .tagLabel {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.commTagPage .tagImageContainer .addedTagMarker .tagLabel .name {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  font-weight: 700;
+  color: #fff;
+}
+.commTagPage .tagImageContainer .addedTagMarker .tagLabel .price {
+  font-family: "Inter", sans-serif;
+  font-size: 0.5625rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #D7D7D7;
+}
+.commTagPage .tagFooter {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0px -5px 15px -9px rgba(0, 0, 0, 0.25);
+}
+.commTagPage .tagFooter .backBtn {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #6B6B6B;
+  cursor: pointer;
+}
+.commTagPage .tagFooter .doneBtn {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #58A563;
+  cursor: pointer;
+  color: #fff;
+}
+.commTagPage .modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.commTagPage .modalOverlay .tagModalContent {
+  background: #fff;
+  width: 92%;
+  max-width: 400px;
+  padding: 24px;
+  border-radius: 20px;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+}
+.commTagPage .modalOverlay .tagModalContent h3 {
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1A1C19;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  color: #1A1C19;
+}
+.commTagPage .modalOverlay .tagModalContent .goodsListSwipe {
+  max-height: 300px;
+  overflow-y: auto;
+}
+.commTagPage .modalOverlay .tagModalContent .goodsListSwipe .goodsItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  border: 1px solid #F2F5F2;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.commTagPage .modalOverlay .tagModalContent .goodsListSwipe .goodsItem:active {
+  background-color: #F2F5F2;
+}
+.commTagPage .modalOverlay .tagModalContent .goodsListSwipe .goodsItem img {
+  width: 54px;
+  height: 54px;
+  border-radius: 8px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.commTagPage .modalOverlay .tagModalContent .goodsListSwipe .goodsItem .info {
+  flex: 1;
+}
+.commTagPage .modalOverlay .tagModalContent .goodsListSwipe .goodsItem .info .name {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+}
+.commTagPage .modalOverlay .tagModalContent .goodsListSwipe .goodsItem .info .price {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #6B6B6B;
+}
+.commTagPage .modalOverlay .tagModalContent .goodsListSwipe .goodsItem .radioCircle {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #D7D7D7;
+  border-radius: 50%;
+}
+.commTagPage .modalOverlay .tagModalContent .registerActionBtn,
+.commTagPage .modalOverlay .tagModalContent .goTradeBtn {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 12px;
+  background: #E06868;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  margin-top: 20px;
+  cursor: pointer;
+}/*# sourceMappingURL=commtag.css.map */

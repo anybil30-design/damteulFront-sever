@@ -1,0 +1,57 @@
+.goodsList {
+  background: none;
+  margin-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #D7D7D7;
+  display: flex;
+  gap: 20px;
+}
+.goodsList > img {
+  width: 130px;
+  height: 130px;
+  border-radius: 7px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  flex-shrink: 0;
+}
+.goodsList .goodsListArea {
+  width: 100%;
+  position: relative;
+}
+.goodsList .goodsListInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.goodsList .goodsListInfo > h3 {
+  font-size: 16px;
+}
+.goodsList .goodsListInfo > span {
+  font-size: 12px;
+}
+.goodsList .goodsListInfo > p {
+  font-size: 18px;
+}
+.goodsList .goodsReaction {
+  position: absolute;
+  bottom: 0px;
+  right: 5px;
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+}
+.goodsList .goodsReaction p {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.goodsList .goodsReaction p > span {
+  margin-left: 5px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+}/*# sourceMappingURL=goodsList.css.map */

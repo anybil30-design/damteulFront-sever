@@ -1,0 +1,136 @@
+@charset "UTF-8";
+/* ==============================
+   전체 래퍼
+============================== */
+.pageWrapper {
+  background-color: #F2F5F2;
+  display: flex;
+  min-height: 100vh;
+}
+
+.wrapper {
+  margin: auto;
+  width: 100%;
+  max-width: 500px;
+  padding: 32px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ==============================
+   헤더 영역
+============================== */
+.adminHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 16px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid #D7D7D7;
+}
+
+.adminTitle {
+  font-family: "Inter", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+}
+
+.adminDesc {
+  font-family: "Inter", sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #6B6B6B;
+}
+
+/* ==============================
+   본문 영역
+============================== */
+.adminBody {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ==============================
+   폼 그룹
+============================== */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.formGroup label {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #6B6B6B;
+}
+.formGroup input,
+.formGroup textarea {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #D7D7D7;
+  background-color: #f4f3f3;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+  outline: none;
+  resize: none;
+}
+.formGroup textarea {
+  min-height: 160px;
+}
+
+/* ==============================
+   하단 버튼
+============================== */
+.actionButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.buttonBase, .danger {
+  padding: 10px 50px;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.secondary {
+  padding: 10px 18px;
+  border-radius: 8px;
+  background-color: #F2F5F2;
+  border: 1px solid #D7D7D7;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+  cursor: pointer;
+}
+.secondary:hover {
+  background-color: #D7D7D7;
+}
+
+.danger {
+  background-color: #E06868;
+}
+.danger:hover {
+  background-color: rgb(219.6565934066, 82.8434065934, 82.8434065934);
+}/*# sourceMappingURL=PostDetailPage.module.css.map */

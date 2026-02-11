@@ -1,0 +1,290 @@
+.deletePopup {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.deletePopup .deleteModal {
+  width: 92%;
+  height: 12rem;
+  background: #fff;
+  border-radius: 20px;
+  text-align: center;
+  vertical-align: center;
+}
+.deletePopup .deleteModal > p {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.deletePopup .deleteModal .deleteBtn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.deletePopup .deleteModal .deleteBtn > button {
+  width: 40%;
+  min-width: 9rem;
+  height: 50px;
+  border-radius: 8px;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.deletePopup .deleteModal .deleteBtn > button:first-child {
+  background: #D7D7D7;
+  color: #6B6B6B;
+}
+.deletePopup .deleteModal .deleteBtn > button:last-child {
+  background: #58A563;
+  color: #fff;
+}
+
+.bottomBtn {
+  display: flex;
+  justify-content: center;
+  background: #F2F5F2;
+  gap: 10px;
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  bottom: 0px;
+  left: 0px;
+  box-shadow: 0px -5px 15px -9px rgba(0, 0, 0, 0.25);
+  padding-top: 10px;
+}
+.bottomBtn button:first-child, .bottomBtn a:first-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #6B6B6B;
+  cursor: pointer;
+}
+.bottomBtn button:last-child, .bottomBtn a:last-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #58A563;
+  cursor: pointer;
+}
+
+.myProfile {
+  margin-top: 60px;
+  padding-bottom: 3rem;
+  margin-bottom: 2rem;
+}
+.myProfile .myContainer {
+  border-radius: 20px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin: 20px auto;
+}
+.myProfile .myProfileCheck {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.myProfile .myProfileCheck > h3 img {
+  width: 67px;
+  height: 67px;
+  margin-top: 5%;
+}
+.myProfile .myProfileCheck > a {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #F2F5F2;
+  display: block;
+  line-height: 50px;
+  text-align: center;
+  color: #1A1C19;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+  width: 90%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.myProfile .myProfileCheck .myProfileCheckAlign {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.myProfile .myUserClass {
+  position: relative;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.myProfile .myUserClass svg {
+  font-size: 1.2rem;
+  position: absolute;
+  right: 5%;
+  top: 5%;
+}
+.myProfile .myUserClass > img {
+  width: 68px;
+  height: 68px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 20px;
+}
+.myProfile .myUserClass > p > span {
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #58A563;
+}
+.myProfile .mySell h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+  align-self: flex-start;
+  margin-left: 5%;
+  margin-bottom: 20px;
+}
+.myProfile .mySwipeContainer {
+  display: flex;
+  overflow-x: auto;
+  width: 90%;
+  gap: 1rem;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+.myProfile .mySwipeContainer::-webkit-scrollbar {
+  display: none;
+}
+.myProfile .mySwipeContainer .mySwipeItem {
+  width: 80px;
+  flex-shrink: 0;
+}
+.myProfile .mySwipeContainer .mySwipeItem > img {
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.myProfile .mySwipeContainer .mySwipeItem > p:first-of-type {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+.myProfile .mySwipeContainer .mySwipeItem > p:last-of-type {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.myProfile .userReviewWrapper {
+  border-radius: 20px;
+  background: #fff;
+  padding: 30px 5%;
+  margin: 20px auto;
+}
+.myProfile .userReviewWrapper > h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+  align-self: flex-start;
+  margin-bottom: 20px;
+}
+.myProfile .userReviewWrapper .userReview:last-child {
+  border-bottom: none;
+}
+.myProfile .userReviewWrapper .userReview {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  border-bottom: 1px solid #D7D7D7;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+.myProfile .userReviewWrapper .userReview > img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.myProfile .userReviewWrapper .userReview .userReviewContent {
+  line-height: 20px;
+  padding-right: 10%;
+}
+.myProfile .userReviewWrapper .userReview .userReviewContent > p {
+  margin-top: 15px;
+}
+.myProfile .userReviewWrapper .userReview .userReviewContent > span {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #6B6B6B;
+}/*# sourceMappingURL=myProfile.css.map */

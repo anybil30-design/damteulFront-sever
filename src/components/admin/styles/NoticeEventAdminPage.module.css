@@ -1,0 +1,252 @@
+@charset "UTF-8";
+/* ==================================================
+   관리자 페이지 공통 컨테이너
+================================================== */
+.adminPageContainer {
+  width: 100%;
+  max-width: 1300px;
+  min-width: 1300px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #F2F5F2;
+  min-height: 100vh;
+  /* ==========================
+     상단 헤더 영역
+  ========================== */
+  /* ==========================
+     필터 / 검색 바
+  ========================== */
+  /* ==========================
+     탭 버튼
+  ========================== */
+  /* ==========================
+     관리자 테이블
+  ========================== */
+  /* ==========================
+     페이지네이션
+  ========================== */
+  /* ==========================
+     상태 뱃지
+  ========================== */
+}
+.adminPageContainer .adminHeader {
+  margin-bottom: 20px;
+}
+.adminPageContainer .adminHeader .adminTitle {
+  font-family: "Inter", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.adminPageContainer .adminHeader .adminDesc {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #6B6B6B;
+}
+.adminPageContainer .filterBar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+}
+.adminPageContainer .filterBar > .writeButtonWrap {
+  margin-left: auto;
+}
+.adminPageContainer .filterBar > .writeButtonWrap .writeButton {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  background-color: #4a6cf7;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.adminPageContainer .filterBar > .writeButtonWrap .writeButton:hover {
+  background-color: #3957d6;
+}
+.adminPageContainer .filterBar .searchBox {
+  position: relative;
+  width: 300px;
+  margin-right: 25px;
+}
+.adminPageContainer .filterBar .searchBox input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #D7D7D7;
+  border-radius: 6px;
+  background-color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.adminPageContainer .filterBar .searchBox input:focus {
+  outline: none;
+  border-color: #58A563;
+  box-shadow: 0 0 0 2px rgba(88, 165, 99, 0.15);
+}
+.adminPageContainer .filterBar select {
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #D7D7D7;
+  border-radius: 6px;
+  background-color: #fff;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.adminPageContainer .filterBar select:focus {
+  outline: none;
+  border-color: #58A563;
+  box-shadow: 0 0 0 2px rgba(88, 165, 99, 0.15);
+}
+.adminPageContainer .filterBar button {
+  height: 40px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #58A563;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+.adminPageContainer .filterBar button:hover {
+  background-color: rgb(77.3565217391, 145.0434782609, 87.0260869565);
+}
+.adminPageContainer .filterBar button:active {
+  transform: translateY(1px);
+}
+.adminPageContainer .filterBar button.danger {
+  background-color: #E06868;
+}
+.adminPageContainer .filterBar button.danger:hover {
+  background-color: rgb(218.7879120879, 78.6120879121, 78.6120879121);
+}
+.adminPageContainer .tabContainer {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.adminPageContainer .tabContainer .tabButton1,
+.adminPageContainer .tabContainer .tabButton2 {
+  border-radius: 12px;
+  border: 1px solid #D7D7D7;
+  background-color: #fff;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1A1C19;
+  line-height: 1.4;
+  transition: all 0.2s ease;
+}
+.adminPageContainer .tabContainer .tabButton1.active,
+.adminPageContainer .tabContainer .tabButton2.active {
+  background-color: #58A563;
+  color: #fff;
+  border-color: #58A563;
+}
+.adminPageContainer .tabContainer .tabButton1:hover:not(.active),
+.adminPageContainer .tabContainer .tabButton2:hover:not(.active) {
+  background-color: #F2F5F2;
+}
+.adminPageContainer .tabContainer .tabButton1 {
+  padding: 10px 31px;
+}
+.adminPageContainer .tabContainer .tabButton2 {
+  padding: 10px 24px;
+}
+.adminPageContainer .adminTable {
+  width: 100%;
+  max-width: 1300px;
+  min-width: 1300px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  table-layout: fixed;
+  word-break: break-word;
+}
+.adminPageContainer .adminTable th,
+.adminPageContainer .adminTable td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #D7D7D7;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.adminPageContainer .adminTable th {
+  background-color: #F2F5F2;
+}
+.adminPageContainer .adminTable td {
+  vertical-align: middle;
+}
+.adminPageContainer .adminTable td .gradeContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.adminPageContainer .adminTable tbody tr:hover {
+  background-color: #D7D7D7;
+}
+.adminPageContainer .adminTable .btn-sm {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #666;
+}
+.adminPageContainer .adminTable .btn-sm:hover {
+  color: #4a6cf7;
+}
+.adminPageContainer .pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.adminPageContainer .pagination button {
+  padding: 6px 12px;
+  border: 1px solid #D7D7D7;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+}
+.adminPageContainer .statusBadge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 500;
+  text-align: center;
+  min-width: 50px;
+}
+.adminPageContainer .statusBadge.start {
+  background-color: #4caf50;
+}
+.adminPageContainer .statusBadge.new {
+  background-color: #2D4356;
+}
+.adminPageContainer .statusBadge.end {
+  background-color: #9e9e9e;
+}/*# sourceMappingURL=NoticeEventAdminPage.module.css.map */

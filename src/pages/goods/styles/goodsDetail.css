@@ -1,0 +1,363 @@
+.deletePopup {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.deletePopup .deleteModal {
+  width: 92%;
+  height: 12rem;
+  background: #fff;
+  border-radius: 20px;
+  text-align: center;
+  vertical-align: center;
+}
+.deletePopup .deleteModal > p {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.deletePopup .deleteModal .deleteBtn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.deletePopup .deleteModal .deleteBtn > button {
+  width: 40%;
+  min-width: 9rem;
+  height: 50px;
+  border-radius: 8px;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.deletePopup .deleteModal .deleteBtn > button:first-child {
+  background: #D7D7D7;
+  color: #6B6B6B;
+}
+.deletePopup .deleteModal .deleteBtn > button:last-child {
+  background: #58A563;
+  color: #fff;
+}
+
+.bottomBtn {
+  display: flex;
+  justify-content: center;
+  background: #F2F5F2;
+  gap: 10px;
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  bottom: 0px;
+  left: 0px;
+  box-shadow: 0px -5px 15px -9px rgba(0, 0, 0, 0.25);
+  padding-top: 10px;
+}
+.bottomBtn button:first-child, .bottomBtn a:first-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #6B6B6B;
+  cursor: pointer;
+}
+.bottomBtn button:last-child, .bottomBtn a:last-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #58A563;
+  cursor: pointer;
+}
+
+.postUser {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  max-width: 767px;
+  min-width: 360px;
+  padding-left: 25px;
+  height: 70px;
+  display: flex;
+  justify-content: start;
+  gap: 15px;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+  background: #fff;
+}
+.postUser img:first-of-type {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.postUser img:last-of-type {
+  width: 20px;
+  height: 20px;
+  margin-left: 0;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+  border-radius: 0;
+}
+.postUser .moreBtn {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  right: 50px;
+}
+
+.swipeContainer {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.swipeContainer::-webkit-scrollbar {
+  display: none;
+}
+.swipeContainer .goodsItem {
+  display: flex;
+  justify-content: center;
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+.swipeContainer .goodsItem img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  aspect-ratio: 390/430;
+  max-width: 600px;
+}
+
+.goodsInfo {
+  position: relative;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.goodsInfo > h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1A1C19;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+.goodsInfo > p:first-of-type {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #6B6B6B;
+  margin-bottom: 20px;
+}
+.goodsInfo > p:nth-of-type(2) {
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+  margin-bottom: 50px;
+}
+.goodsInfo .reaction {
+  display: flex;
+  gap: 15px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.goodsInfo .reaction > p span {
+  margin-left: 5px;
+  transform: translateY(-2px);
+  display: inline-block;
+}
+.goodsInfo .favorite {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+  background: none;
+  border: none;
+  position: absolute;
+  top: 0px;
+  right: 5px;
+}
+
+.usedInfo {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 25px;
+  overflow: visible;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+}
+.usedInfo .usedItem {
+  margin-top: 25px;
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+.usedInfo .usedItem::-webkit-scrollbar {
+  display: none;
+}
+.usedInfo > p {
+  width: 90%;
+  word-break: break-all;
+  white-space: pre-wrap;
+  line-height: 30px;
+}
+.usedInfo img {
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  flex-shrink: 0;
+}
+
+.relevance > h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+  margin-top: 50px;
+  margin-bottom: 15px;
+}
+.relevance .relevanceGrid {
+  width: 100%;
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.relevance .relevanceGrid .relevanceItem {
+  width: 100%;
+}
+.relevance .relevanceGrid .relevanceItem > img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.relevance .relevanceGrid .relevanceItem > h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.relevance .relevanceGrid .relevanceItem > p {
+  margin: 0;
+}
+
+.moreAction {
+  width: 175px;
+  height: 100px;
+  position: absolute;
+  z-index: 2;
+  background: #fff;
+  border-radius: 5px;
+  top: 90%;
+  right: 10%;
+  text-align: center;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.moreAction > span {
+  height: 1px;
+  background: #6B6B6B;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.moreAction > a {
+  color: #E06868;
+}
+
+.goodsDetail {
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+.goodsDetail > .bottomBtn > a:first-child {
+  background: #EEC75E;
+  display: inline-block;
+  line-height: 50px;
+  text-align: center;
+}
+.goodsDetail > .bottomBtn > a:first-child.disabled {
+  background: #6B6B6B !important;
+}
+.goodsDetail > .bottomBtn > a:last-child {
+  background: #E06868;
+  display: inline-block;
+  line-height: 50px;
+  text-align: center;
+}
+.goodsDetail > .bottomBtn > button:first-child {
+  background: #E06868;
+}
+.goodsDetail > .bottomBtn > button:last-child {
+  background: #82BC62;
+}/*# sourceMappingURL=goodsDetail.css.map */

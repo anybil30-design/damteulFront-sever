@@ -1,0 +1,136 @@
+.pageWrapper {
+  background-color: #F2F5F2;
+  display: flex;
+  min-height: 100vh;
+}
+
+.wrapper {
+  margin: auto;
+  width: 100%;
+  max-width: 500px;
+  padding: 32px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.adminHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 16px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid #D7D7D7;
+}
+.adminHeader .adminTitle {
+  font-family: "Inter", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+}
+.adminHeader .adminDesc {
+  font-family: "Inter", sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #6B6B6B;
+}
+
+.adminBody {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.adminBody .inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.adminBody .inputGroup label {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+}
+.adminBody .inputGroup input,
+.adminBody .inputGroup textarea {
+  resize: none;
+  padding: 12px 14px;
+  border: 1px solid #D7D7D7;
+  border-radius: 8px;
+  background-color: #f4f3f3;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+  outline: none;
+}
+.adminBody .inputGroup textarea {
+  min-height: 160px;
+}
+.adminBody .statusWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+.adminBody .statusWrapper strong {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+}
+.adminBody .statusWrapper .statusBadge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #fff;
+}
+.adminBody .statusWrapper .statusBadge.new {
+  background-color: #82BC62;
+}
+.adminBody .statusWrapper .statusBadge.end {
+  background-color: #E06868;
+}
+.adminBody .actionButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+.adminBody .actionButtons .buttonBase, .adminBody .actionButtons button.danger, .adminBody .actionButtons button.primary {
+  padding: 10px 50px;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.adminBody .actionButtons button {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.adminBody .actionButtons button.primary {
+  background-color: #58A563;
+}
+.adminBody .actionButtons button.primary:hover {
+  background-color: rgb(79.1304347826, 148.3695652174, 89.0217391304);
+}
+.adminBody .actionButtons button.danger {
+  background-color: #E06868;
+}
+.adminBody .actionButtons button.danger:hover {
+  background-color: rgb(219.6565934066, 82.8434065934, 82.8434065934);
+}/*# sourceMappingURL=CommunityDetailPage.module.css.map */

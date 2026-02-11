@@ -1,0 +1,163 @@
+@charset "UTF-8";
+/* 모달 오버레이 */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 모달 본문 */
+.modalContent {
+  background-color: #F2F5F2;
+  width: 28%;
+  max-width: 90vw;
+  border-radius: 12px;
+  padding: 20px 30px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+}
+.modalContent::-webkit-scrollbar {
+  width: 0;
+}
+.modalContent .closeButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #555;
+}
+.modalContent .closeButton:hover {
+  color: #000;
+}
+.modalContent .adminHeader {
+  margin-bottom: 20px;
+}
+.modalContent .adminHeader .adminTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.modalContent .adminHeader .adminDesc {
+  font-size: 0.875rem;
+  color: #666;
+}
+.modalContent .modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+}
+.modalContent .modalBody section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.modalContent .modalBody section h4 {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+}
+.modalContent .modalBody section p {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+}
+.modalContent .modalBody section input,
+.modalContent .modalBody section select,
+.modalContent .modalBody section textarea {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #58A563;
+  background-color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.modalContent .modalBody section input:focus,
+.modalContent .modalBody section select:focus,
+.modalContent .modalBody section textarea:focus {
+  outline: none;
+  border-color: #58A563;
+}
+.modalContent .modalBody section textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+.modalContent .actionButtons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.modalContent .actionButtons button {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+.modalContent .actionButtons button.primary {
+  background-color: #58A563;
+  color: #fff;
+}
+.modalContent .actionButtons button.primary:hover {
+  background-color: #4c9953;
+}
+.modalContent .actionButtons button.danger {
+  background-color: #E06868;
+  color: #fff;
+}
+.modalContent .actionButtons button.danger:hover {
+  background-color: #c95a5a;
+}
+.modalContent .previewBox {
+  display: flex;
+  gap: 8px;
+}
+.modalContent .previewBox img {
+  width: 80px;
+  height: 80px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #D7D7D7;
+}
+
+/* 상태 배지 */
+.statusBadge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+.statusBadge.new {
+  background-color: #58A563;
+  color: #fff;
+}
+.statusBadge.used {
+  background-color: #E06868;
+  color: #fff;
+}/*# sourceMappingURL=NoticeEventDetailPage.module.css.map */

@@ -1,0 +1,257 @@
+@charset "UTF-8";
+.deletePopup {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.deletePopup .deleteModal {
+  width: 92%;
+  height: 12rem;
+  background: #fff;
+  border-radius: 20px;
+  text-align: center;
+  vertical-align: center;
+}
+.deletePopup .deleteModal > p {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.deletePopup .deleteModal .deleteBtn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.deletePopup .deleteModal .deleteBtn > button {
+  width: 40%;
+  min-width: 9rem;
+  height: 50px;
+  border-radius: 8px;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.deletePopup .deleteModal .deleteBtn > button:first-child {
+  background: #D7D7D7;
+  color: #6B6B6B;
+}
+.deletePopup .deleteModal .deleteBtn > button:last-child {
+  background: #58A563;
+  color: #fff;
+}
+
+.bottomBtn {
+  display: flex;
+  justify-content: center;
+  background: #F2F5F2;
+  gap: 10px;
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  bottom: 0px;
+  left: 0px;
+  box-shadow: 0px -5px 15px -9px rgba(0, 0, 0, 0.25);
+  padding-top: 10px;
+}
+.bottomBtn button:first-child, .bottomBtn a:first-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #6B6B6B;
+  cursor: pointer;
+}
+.bottomBtn button:last-child, .bottomBtn a:last-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #58A563;
+  cursor: pointer;
+}
+
+.addressSearchBox {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  /* input과 버튼 세로 정렬 */
+  gap: 8px;
+  /* input - button 간격 */
+  position: relative;
+  top: 10px;
+  height: 50px;
+}
+.addressSearchBox > label {
+  display: none;
+}
+.addressSearchBox > input {
+  width: 100%;
+  min-width: 360px;
+  border-radius: 30px;
+  height: 50px;
+  box-sizing: border-box;
+  text-indent: 20px;
+  border: none;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.addressSearchBox .searchBtn {
+  position: absolute;
+  right: 3%;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #1A1C19;
+  transform: translateY(2px);
+}
+
+.addressValueWrap {
+  width: 100%;
+  min-width: 360px;
+  margin-top: 30px;
+  line-height: 30px;
+}
+.addressValueWrap .neighbor {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #6B6B6B;
+}
+.addressValueWrap .addressValue {
+  margin-top: 20px;
+}
+.addressValueWrap .addressValue .searchMessage {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+  text-align: center;
+  margin-top: 200px;
+}
+.addressValueWrap .addressValue .value {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.addressValueWrap .addressValue .value button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  height: 50px;
+  line-height: 50px;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.addressValueWrap .addressValue .value .checkBtn {
+  font-size: 16px;
+}
+.addressValueWrap .addressValue .value .checkBtn svg {
+  fill: #58A563;
+}
+.addressValueWrap .addressValue .value::after {
+  content: "";
+  position: absolute;
+  left: -4.3%;
+  width: 100vw;
+  border-bottom: 1px solid #D7D7D7;
+  display: block;
+  max-width: 767px;
+  min-width: 390px;
+  transform: translateY(25px);
+}
+
+.formButtonWrapper {
+  background-color: #F2F5F2;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  padding-bottom: 15px;
+  bottom: 0px;
+  padding: 0 30px;
+  transform: translateX(-30px);
+  align-items: center;
+  height: 70px;
+  width: 100%;
+}
+.formButtonWrapper a {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #6B6B6B;
+  display: inline-block;
+  line-height: 50px;
+  text-align: center;
+}
+.formButtonWrapper button {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #58A563;
+  cursor: pointer;
+}
+.formButtonWrapper button:disabled {
+  cursor: default;
+}/*# sourceMappingURL=addressSearch.css.map */

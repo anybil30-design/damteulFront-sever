@@ -1,0 +1,472 @@
+@charset "UTF-8";
+.deletePopup {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.deletePopup .deleteModal {
+  width: 92%;
+  height: 12rem;
+  background: #fff;
+  border-radius: 20px;
+  text-align: center;
+  vertical-align: center;
+}
+.deletePopup .deleteModal > p {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.deletePopup .deleteModal .deleteBtn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.deletePopup .deleteModal .deleteBtn > button {
+  width: 40%;
+  min-width: 9rem;
+  height: 50px;
+  border-radius: 8px;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.deletePopup .deleteModal .deleteBtn > button:first-child {
+  background: #D7D7D7;
+  color: #6B6B6B;
+}
+.deletePopup .deleteModal .deleteBtn > button:last-child {
+  background: #58A563;
+  color: #fff;
+}
+
+.bottomBtn {
+  display: flex;
+  justify-content: center;
+  background: #F2F5F2;
+  gap: 10px;
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  bottom: 0px;
+  left: 0px;
+  box-shadow: 0px -5px 15px -9px rgba(0, 0, 0, 0.25);
+  padding-top: 10px;
+}
+.bottomBtn button:first-child, .bottomBtn a:first-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #6B6B6B;
+  cursor: pointer;
+}
+.bottomBtn button:last-child, .bottomBtn a:last-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #58A563;
+  cursor: pointer;
+}
+
+.bodyParent:has(.commPostPage) {
+  background-color: #fff !important;
+}
+
+.commPostPage {
+  width: 100%;
+  height: 100%;
+  min-height: 100dvh;
+  max-width: 767px;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: #fff;
+  padding-bottom: 100px;
+  /* 사용자 헤더 */
+  /* 이미지 섹션 */
+  /* 게시글 텍스트 영역 */
+  /* ✅ 1. 하단 등록 버튼 디자인 (고정 및 중앙 정렬) */
+  /* [4] 댓글 목록 - 우측 상단 삭제 버튼 적용 */
+}
+.commPostPage .postHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 0 1rem;
+}
+.commPostPage .postHeader .userInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.commPostPage .postHeader .userInfo > img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.commPostPage .postHeader .userInfo .nameWrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.commPostPage .postHeader .userInfo .nameWrap .nickname {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  font-weight: 700;
+}
+.commPostPage .postHeader .userInfo .nameWrap .gradeBadge {
+  width: 20px;
+  height: 20px;
+}
+.commPostPage .postHeader .menuWrap {
+  position: relative;
+}
+.commPostPage .postHeader .menuWrap svg {
+  font-size: 1.4rem;
+  color: #6B6B6B;
+  cursor: pointer;
+}
+.commPostPage .postHeader .menuWrap .adminMenu {
+  position: absolute;
+  right: 0;
+  top: 30px;
+  background: #fff;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 50;
+  border: 1px solid #F2F5F2;
+}
+.commPostPage .postHeader .menuWrap .adminMenu button {
+  display: block;
+  width: 100px;
+  padding: 12px;
+  border: none;
+  background: none;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  text-align: center;
+}
+.commPostPage .postHeader .menuWrap .adminMenu button:first-child {
+  border-bottom: 1px solid #F2F5F2;
+}
+.commPostPage .postHeader .menuWrap .adminMenu button:last-child {
+  color: #E06868;
+}
+.commPostPage .imageSection {
+  position: relative;
+}
+.commPostPage .imageSection .imgWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+.commPostPage .imageSection .imgWrap img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.commPostPage .imageSection .imgWrap .postTagMarker {
+  position: absolute;
+  z-index: 5;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.commPostPage .imageSection .imgWrap .postTagMarker .tagBox {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.commPostPage .imageSection .imgWrap .postTagMarker .tagBox span {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #fff;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.commPostPage .imageSection .imgWrap .postTagMarker .tagBox small {
+  color: #fff;
+  white-space: nowrap;
+}
+.commPostPage .imageSection .imgWrap .postTagMarker .tagBox::after {
+  content: " >";
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+.commPostPage .imageSection .imgWrap .postTagMarker::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px 5px 0 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
+}
+.commPostPage .imageSection .tagToggleBtn {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.commPostPage .imageSection .tagToggleBtn svg {
+  fill: #fff !important;
+  color: #fff !important;
+  font-size: 1.2rem;
+}
+.commPostPage .goodsInfo {
+  padding: 20px 0;
+}
+.commPostPage .goodsInfo h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+  margin: 1.5rem 0;
+}
+.commPostPage .goodsInfo .meta {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #6B6B6B;
+}
+.commPostPage .goodsInfo .postMainText {
+  margin-bottom: 24px;
+}
+.commPostPage .goodsInfo .postMainText p {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  line-height: 1.6;
+  color: #1A1C19;
+  white-space: pre-wrap;
+}
+.commPostPage .goodsInfo .interactionBar {
+  display: flex;
+  gap: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #F2F5F2;
+}
+.commPostPage .goodsInfo .interactionBar .iconItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.commPostPage .goodsInfo .interactionBar .iconItem svg {
+  font-size: 1.4rem;
+  color: #6B6B6B;
+}
+.commPostPage .goodsInfo .interactionBar .iconItem svg.active {
+  color: #E06868;
+}
+.commPostPage .goodsInfo .interactionBar .iconItem span {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  font-weight: 700;
+}
+.commPostPage .bottomInteractionBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #F2F5F2;
+  padding: 10px 0 calc(10px + env(safe-area-inset-bottom));
+  z-index: 100;
+}
+.commPostPage .bottomInteractionBar .bottomInner {
+  width: 92%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.commPostPage .bottomInteractionBar .bottomInner .commentInputPlaceholder {
+  flex: 1;
+  height: 44px;
+  background: #F2F5F2;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 10px;
+}
+.commPostPage .bottomInteractionBar .bottomInner .commentInputPlaceholder img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+.commPostPage .bottomInteractionBar .bottomInner .commentInputPlaceholder span {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #6B6B6B;
+}
+.commPostPage .bottomInteractionBar .bottomInner .sendBtn {
+  background: none;
+  border: none;
+  color: #58A563;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  padding: 5px;
+}
+.commPostPage .commentListSection {
+  padding: 1rem;
+  border-top: 1px solid #F2F5F2;
+}
+.commPostPage .commentListSection .commentItem {
+  position: relative;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid #fff;
+  padding-right: 3.5rem;
+  /* ✅ 우측 상단 삭제 버튼 스타일 */
+}
+.commPostPage .commentListSection .commentItem .commentHeader {
+  margin-bottom: 0.3rem;
+}
+.commPostPage .commentListSection .commentItem .commentHeader .commentUser {
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: #1A1C19;
+}
+.commPostPage .commentListSection .commentItem .commentText {
+  font-size: 0.85rem;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.commPostPage .commentListSection .commentItem .commDelBtn {
+  position: absolute;
+  top: 1.2rem;
+  right: 0;
+  background: transparent;
+  border: 1px solid #F2F5F2;
+  color: #D7D7D7;
+  font-size: 0.65rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.commPostPage .commentListSection .commentItem .commDelBtn:hover {
+  color: #E06868;
+  border-color: #E06868;
+  background-color: #fff;
+}
+.commPostPage .bottomInteractionBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #F2F5F2;
+  padding: 10px 16px;
+  z-index: 100;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+.commPostPage .bottomInteractionBar .bottomInner {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  background: #f8f8f8;
+  border-radius: 25px;
+  padding: 5px 15px;
+}
+.commPostPage .bottomInteractionBar .bottomInner .commentInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 8px 10px;
+  font-size: 14px;
+  outline: none;
+}
+.commPostPage .bottomInteractionBar .bottomInner .commentInput::-moz-placeholder {
+  color: #bbb;
+}
+.commPostPage .bottomInteractionBar .bottomInner .commentInput::placeholder {
+  color: #bbb;
+}
+.commPostPage .bottomInteractionBar .bottomInner .sendBtn {
+  background: transparent;
+  border: none;
+  color: #58A563;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0 5px;
+  transition: color 0.2s;
+}
+.commPostPage .bottomInteractionBar .bottomInner .sendBtn:hover {
+  color: rgb(70.2608695652, 131.7391304348, 79.0434782609);
+}
+.commPostPage .bottomInteractionBar .bottomInner .sendBtn:disabled {
+  color: #ccc;
+}/*# sourceMappingURL=commpost.css.map */

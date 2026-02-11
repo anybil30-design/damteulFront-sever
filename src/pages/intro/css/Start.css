@@ -1,0 +1,18 @@
+.bodyParent:has(.splashScreen) {
+  background-color: #58A563;
+}
+
+.splashScreen {
+  background-color: #58A563;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+}
+.splashScreen.fadeOut {
+  opacity: 0;
+}
+.splashScreen .logo_container img {
+  width: 250px;
+  height: auto;
+}/*# sourceMappingURL=Start.css.map */

@@ -1,0 +1,251 @@
+@charset "UTF-8";
+.deletePopup {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.deletePopup .deleteModal {
+  width: 92%;
+  height: 12rem;
+  background: #fff;
+  border-radius: 20px;
+  text-align: center;
+  vertical-align: center;
+}
+.deletePopup .deleteModal > p {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.deletePopup .deleteModal .deleteBtn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.deletePopup .deleteModal .deleteBtn > button {
+  width: 40%;
+  min-width: 9rem;
+  height: 50px;
+  border-radius: 8px;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.deletePopup .deleteModal .deleteBtn > button:first-child {
+  background: #D7D7D7;
+  color: #6B6B6B;
+}
+.deletePopup .deleteModal .deleteBtn > button:last-child {
+  background: #58A563;
+  color: #fff;
+}
+
+.bottomBtn {
+  display: flex;
+  justify-content: center;
+  background: #F2F5F2;
+  gap: 10px;
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  bottom: 0px;
+  left: 0px;
+  box-shadow: 0px -5px 15px -9px rgba(0, 0, 0, 0.25);
+  padding-top: 10px;
+}
+.bottomBtn button:first-child, .bottomBtn a:first-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #6B6B6B;
+  cursor: pointer;
+}
+.bottomBtn button:last-child, .bottomBtn a:last-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #58A563;
+  cursor: pointer;
+}
+
+.commWritePage {
+  padding: 3.5rem 0;
+}
+.commWritePage .commWriteContainer {
+  /* 이미지 영역 */
+  /* 상세 내용 영역 */
+}
+.commWritePage .commWriteContainer .imageUploadSection {
+  width: 100%;
+  max-width: 767px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 1rem;
+  width: 100%;
+  color: #fff;
+  /* 등록 버튼 */
+  /* 미리보기 아이템 */
+}
+.commWritePage .commWriteContainer .imageUploadSection::-webkit-scrollbar {
+  display: none;
+}
+.commWritePage .commWriteContainer .imageUploadSection .uploadBtnBox {
+  flex-shrink: 0;
+}
+.commWritePage .commWriteContainer .imageUploadSection .uploadBtnBox .uploadLabel {
+  width: 4rem;
+  height: 4rem;
+  margin-right: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #58A563;
+  border-radius: 0.5rem;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.commWritePage .commWriteContainer .imageUploadSection .uploadBtnBox .uploadLabel svg {
+  font-size: 1.4rem;
+  color: #fff;
+  fill: #fff;
+}
+.commWritePage .commWriteContainer .imageUploadSection .uploadBtnBox .uploadLabel p {
+  font-size: 0.8rem;
+  padding-top: 0.1rem;
+  color: #fff;
+}
+.commWritePage .commWriteContainer .imageUploadSection .uploadBtnBox .uploadLabel p span {
+  color: #fff;
+}
+.commWritePage .commWriteContainer .imageUploadSection .uploadBtnBox input {
+  display: none;
+}
+.commWritePage .commWriteContainer .imageUploadSection .previewItem {
+  flex-shrink: 0;
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  margin-right: 0.5rem;
+}
+.commWritePage .commWriteContainer .imageUploadSection .previewItem img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 0.5rem;
+}
+.commWritePage .commWriteContainer .imageUploadSection .previewItem .representativeBadge {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #1A1C19;
+  color: #fff;
+  font-size: 0.5rem;
+  text-align: center;
+  padding: 0.1rem 0;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+.commWritePage .commWriteContainer .imageUploadSection .previewItem .deleteBtn {
+  position: absolute;
+  top: -0.8rem;
+  right: -0.8rem;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #1A1C19;
+}
+.commWritePage .commWriteContainer .contentInputSection {
+  padding: 1rem;
+  width: 100%;
+  max-width: 767px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.commWritePage .commWriteContainer .contentInputSection .inputGroup {
+  margin-bottom: 2rem;
+}
+.commWritePage .commWriteContainer .contentInputSection .inputGroup label {
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  display: block;
+  margin-bottom: 10px;
+}
+.commWritePage .commWriteContainer .contentInputSection .inputGroup select, .commWritePage .commWriteContainer .contentInputSection .inputGroup input, .commWritePage .commWriteContainer .contentInputSection .inputGroup textarea {
+  width: 100%;
+  height: 50px;
+  padding: 10px 0;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  text-indent: 10px;
+}
+.commWritePage .commWriteContainer .contentInputSection .inputGroup select::-moz-placeholder, .commWritePage .commWriteContainer .contentInputSection .inputGroup input::-moz-placeholder, .commWritePage .commWriteContainer .contentInputSection .inputGroup textarea::-moz-placeholder {
+  color: #6B6B6B;
+}
+.commWritePage .commWriteContainer .contentInputSection .inputGroup select::placeholder, .commWritePage .commWriteContainer .contentInputSection .inputGroup input::placeholder, .commWritePage .commWriteContainer .contentInputSection .inputGroup textarea::placeholder {
+  color: #6B6B6B;
+}
+.commWritePage .commWriteContainer .contentInputSection .inputGroup select {
+  /* 1. 브라우저 기본 화살표 숨기기 */
+  -webkit-appearance: none; /* 크롬, 사파리 */
+  -moz-appearance: none; /* 파이어폭스 */
+  appearance: none; /* 표준 */
+  background-color: #fff !important;
+  opacity: 1;
+  /* 2. 내가 원하는 화살표 아이콘 넣기 (SVG 활용) */
+  /* 배경 이미지로 화살표 아이콘을 넣고 오른쪽 끝에 배치합니다. */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B6B6B'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2rem;
+}
+.commWritePage .commWriteContainer .contentInputSection .inputGroup textarea {
+  height: 12.5rem;
+  resize: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-indent: 0;
+}/*# sourceMappingURL=commwrite.css.map */

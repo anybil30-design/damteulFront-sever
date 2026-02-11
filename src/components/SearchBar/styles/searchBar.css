@@ -1,0 +1,36 @@
+.searchBar {
+  position: relative;
+  cursor: pointer;
+}
+.searchBar [type=search] {
+  -webkit-appearance: textfield;
+}
+.searchBar [type=search]::-webkit-search-cancel-button,
+.searchBar [type=search]::-webkit-search-results-button {
+  display: none;
+}
+.searchBar label {
+  display: none;
+}
+.searchBar input {
+  width: 100%;
+  height: 3rem;
+  border-radius: 25px;
+  border: none;
+  text-indent: 2rem;
+  caret-color: transparent;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+}
+.searchBar .searchBtn {
+  background: none;
+  border: none;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.searchBar .searchBtn svg {
+  font-size: 20px;
+  fill: #1A1C19;
+  cursor: pointer;
+}/*# sourceMappingURL=searchBar.css.map */

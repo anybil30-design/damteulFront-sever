@@ -1,0 +1,133 @@
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background-color: #1A1C19;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.sidebar-logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.sidebar-logo img {
+  max-width: 150px;
+  height: auto;
+}
+
+.sidebar-profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.sidebar-profile .profile-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+.sidebar-profile .profile-info .name {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.sidebar-profile .profile-info .role {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #D7D7D7;
+}
+
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sidebar-menu ul li {
+  margin-bottom: 8px;
+}
+.sidebar-menu ul a {
+  display: block;
+  padding: 12px 10px;
+  border-radius: 6px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.sidebar-menu ul a:hover {
+  background-color: #6B6B6B;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+}
+.sidebar-bottom ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sidebar-bottom ul li {
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  line-height: 1.4;
+}
+.sidebar-bottom ul li.settings {
+  padding: 10px;
+  color: #fff;
+  background-color: transparent;
+}
+.sidebar-bottom ul li.settings:hover {
+  background-color: #6B6B6B;
+}
+.sidebar-bottom ul button.logout {
+  margin-right: 15px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  border-radius: 2px;
+  border: 1px solid #D7D7D7;
+  padding: 2px 7px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.sidebar-bottom ul button.logout:hover {
+  background-color: #F2F5F2;
+  color: #1A1C19;
+}
+
+.admin-layout {
+  display: flex;
+}
+.admin-layout .admin-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.sidebar,
+.sidebar-bottom li.settings {
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+}/*# sourceMappingURL=AdminSidebar.css.map */

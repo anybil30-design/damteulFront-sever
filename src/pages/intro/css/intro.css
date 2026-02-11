@@ -1,0 +1,71 @@
+.firstPageWrap {
+  height: 100vh;
+  position: relative;
+  padding: 0;
+}
+.firstPageWrap .firstPage {
+  position: relative;
+  transform: translateY(-50%);
+  top: 40%;
+}
+.firstPageWrap .firstPage h1 {
+  width: 50%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 40px;
+}
+.firstPageWrap .firstPage h1 > img {
+  width: 100%;
+}
+.firstPageWrap .firstPage .firstPageTxt {
+  width: 100%;
+}
+.firstPageWrap .firstPage .firstPageTxt h2, .firstPageWrap .firstPage .firstPageTxt p {
+  text-align: center;
+}
+.firstPageWrap .firstPage .firstPageTxt h2 {
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #1A1C19;
+  margin-bottom: 10px;
+}
+.firstPageWrap .firstPage .firstPageTxt p {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #6B6B6B;
+}
+.firstPageWrap .firstPageBtn {
+  position: absolute;
+  width: 100%;
+  bottom: 80px;
+}
+.firstPageWrap .firstPageBtn a {
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  display: block;
+  width: 100%;
+  line-height: 50px;
+  text-align: center;
+  margin-top: 10px;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+.firstPageWrap .firstPageBtn a:first-child {
+  background-color: #58A563;
+  color: #fff;
+}
+.firstPageWrap .firstPageBtn a:last-child {
+  background-color: #F2F5F2;
+  color: #58A563;
+  border: 2px solid #58A563;
+}/*# sourceMappingURL=intro.css.map */

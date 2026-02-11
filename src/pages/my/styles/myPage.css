@@ -1,0 +1,245 @@
+.deletePopup {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.deletePopup .deleteModal {
+  width: 92%;
+  height: 12rem;
+  background: #fff;
+  border-radius: 20px;
+  text-align: center;
+  vertical-align: center;
+}
+.deletePopup .deleteModal > p {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.deletePopup .deleteModal .deleteBtn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.deletePopup .deleteModal .deleteBtn > button {
+  width: 40%;
+  min-width: 9rem;
+  height: 50px;
+  border-radius: 8px;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.deletePopup .deleteModal .deleteBtn > button:first-child {
+  background: #D7D7D7;
+  color: #6B6B6B;
+}
+.deletePopup .deleteModal .deleteBtn > button:last-child {
+  background: #58A563;
+  color: #fff;
+}
+
+.bottomBtn {
+  display: flex;
+  justify-content: center;
+  background: #F2F5F2;
+  gap: 10px;
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  bottom: 0px;
+  left: 0px;
+  box-shadow: 0px -5px 15px -9px rgba(0, 0, 0, 0.25);
+  padding-top: 10px;
+}
+.bottomBtn button:first-child, .bottomBtn a:first-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #6B6B6B;
+  cursor: pointer;
+}
+.bottomBtn button:last-child, .bottomBtn a:last-child {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #58A563;
+  cursor: pointer;
+}
+
+.myPage {
+  margin-top: 60px;
+}
+
+.myPageUserWrapper {
+  border-radius: 20px;
+  background: #fff;
+  text-align: center;
+  height: 320px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.myPageUserWrapper .myPageUser {
+  height: 60%;
+  color: #1A1C19;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.myPageUserWrapper .myPageUser > h3 img {
+  width: 108px;
+  height: 108px;
+  margin-top: 5%;
+  margin-bottom: 20px;
+}
+.myPageUserWrapper .myPageUser .profileCheck {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.myPageUserWrapper .myPageUser .profileCheck > svg {
+  position: absolute;
+  right: 0px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  fill: #58A563;
+}
+.myPageUserWrapper .myWallet {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin: 15px auto;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1A1C19;
+  line-height: 1.4;
+}
+.myPageUserWrapper .myWallet .myWalletAlign {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.myPageUserWrapper .myWallet .myWalletAlign > svg {
+  font-family: "Inter", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  fill: #58A563;
+}
+.myPageUserWrapper .payBtn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.myPageUserWrapper .payBtn > button {
+  width: 48%;
+  min-width: 170px;
+  height: 50px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+  border: none;
+  background-color: #58A563;
+  width: 45% !important;
+}
+
+.myPageGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 15px 0px;
+  place-items: center;
+}
+.myPageGrid .myPageMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  border-radius: 8px;
+}
+.myPageGrid .myPageMenu > a svg {
+  stroke: #fff;
+  fill: #fff;
+  font-size: 2rem;
+}
+.myPageGrid .myPageMenu > a p {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #1A1C19;
+  line-height: 1.4;
+  color: #F2F5F2;
+}
+.myPageGrid .myPageMenu:first-of-type {
+  background: #E06868;
+}
+.myPageGrid .myPageMenu:nth-of-type(2) {
+  background: #EE955E;
+}
+.myPageGrid .myPageMenu:nth-of-type(3) {
+  background: #EEC75E;
+}
+.myPageGrid .myPageMenu:nth-of-type(4) {
+  background: #82BC62;
+}
+.myPageGrid .myPageMenu:nth-of-type(5) {
+  background: #58A563;
+}
+.myPageGrid .myPageMenu:nth-of-type(6) {
+  background: #62A1BC;
+}
+.myPageGrid .myPageMenu:nth-of-type(7) {
+  background: #6277BC;
+}
+.myPageGrid .myPageMenu:last-of-type {
+  background: #AA62BC;
+}/*# sourceMappingURL=myPage.css.map */
