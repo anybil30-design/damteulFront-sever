@@ -279,7 +279,7 @@ const ChatRoom = () => {
                       <p>{msg.text}</p>
                     </div>
 
-                    {!isMine && showTime && <p className="time">{formatKSTTime(msg.createdAt)}</p>}
+                    {!isMine && showTime && <p className="time">{msg.createdAt}</p>}
                   </div>
                 </React.Fragment>
               );
