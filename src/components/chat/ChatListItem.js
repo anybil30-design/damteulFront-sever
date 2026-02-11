@@ -127,7 +127,7 @@ const ChatListItem = ({ room }) => {
                 <div>
                   <h3>{room.otherNickname || "상대"}</h3>
                   {/* ✅ 환경/타임존에 흔들리지 않게 KST 확정 파싱 후 "n분 전" */}
-                  <span>{timeAgo(room.lastMessageAt)}</span>
+                  <span>{room.lastMessageAt}</span>
                 </div>
 
                 <p>{truncate(room.lastText, 28)}</p>
