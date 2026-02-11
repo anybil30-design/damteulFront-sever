@@ -4,7 +4,7 @@ import styles from "../admin/styles/UserDetailPage.module.css";
 import { gradeInfo } from "./constants/gradeInfo";
 import api from "app/api/axios";
 import { handleDelete } from "./delete/handleDelete";
-import { statusInfo } from "components/admin/constants";
+
 
 const UserDetailPage = () => {
   const navigate = useNavigate();
