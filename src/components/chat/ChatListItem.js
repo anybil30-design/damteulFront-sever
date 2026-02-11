@@ -90,6 +90,7 @@ const ChatListItem = ({ room }) => {
       : `${process.env.PUBLIC_URL}/images/defaultProfile.png`;
 
   const badge = badgeText(room?.unreadCount);
+  console.log("lastMessageAt:", room.lastMessageAt);
 
   return (
     <li>
