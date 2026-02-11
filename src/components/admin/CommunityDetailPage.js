@@ -1,7 +1,7 @@
 // src/components/admin/CommunityDetailPage.js
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import styles from '../admin/styles/CommunityDetailPage.module.scss';
+import styles from '../admin/styles/CommunityDetailPage.module.css';
 
 import api from "app/api/axios";
 // 삭제 로직

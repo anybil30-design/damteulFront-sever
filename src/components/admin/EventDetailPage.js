@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import styles from '../admin/styles/EventDetailPage.module.scss';
+import styles from '../admin/styles/EventDetailPage.module.css';
 import api from 'app/api/axios';
 import { handleDelete } from "./delete/handleDelete";
 import { uploadSingleImage } from "../uploadImage/uploadSingleImages";
