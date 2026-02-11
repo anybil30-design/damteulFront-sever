@@ -10,6 +10,8 @@ import { API_ORIGIN } from "app/api/apiOrigin";
 /**
  * ✅ DB가 KST로 저장된 DATETIME("YYYY-MM-DD HH:mm:ss")를
  *    프론트에서 이중 보정 없이 안전하게 파싱
+ *
+ * 핵심: KST(+09:00) 오프셋을 명시해서 "UTC로 해석"되는 케이스를 제거
  */
 function parseDateSafe(v) {
   if (!v) return null;
@@ -17,18 +19,17 @@ function parseDateSafe(v) {
 
   const s = String(v);
 
-  // "YYYY-MM-DD HH:mm:ss" -> "YYYY-MM-DDTHH:mm:ss" (로컬=KST)
+  // "YYYY-MM-DD HH:mm:ss" (DB DATETIME) -> "YYYY-MM-DDTHH:mm:ss+09:00"
   if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(s)) {
-    return new Date(s.replace(" ", "T"));
+    return new Date(s.replace(" ", "T") + "+09:00");
   }
 
-  // ISO(Z) 등
+  // ISO(Z) 등은 그대로 (서버가 UTC(Z)로 주면 이쪽으로 들어옴)
   return new Date(s);
 }
 
 /**
  * ✅ createdAt이 없을 때만 쓰는 로컬 KST 문자열(형태 통일용)
- * (가능하면 서버가 createdAt 내려주는 게 베스트)
  */
 function nowKstDatetimeString() {
   const parts = new Intl.DateTimeFormat("en-CA", {
@@ -220,7 +221,6 @@ const ChatRoom = () => {
           nickname: null,
           profile: "defaultProfile.png",
           text,
-          // ✅ ISO(Z)로 fallback하면 섞일 수 있어서, KST 문자열로 형태를 맞춤
           createdAt: data.createdAt || nowKstDatetimeString(),
         },
       ]);
@@ -273,13 +273,14 @@ const ChatRoom = () => {
 
                     {!isMine && !showProfile && <div className="profilePlaceholder" />}
 
+                    {/* ✅ 시간 출력: 양쪽 모두 같은 포맷 함수로 통일 */}
                     {isMine && showTime && <p className="time">{formatKSTTime(msg.createdAt)}</p>}
 
                     <div className="messageBox">
                       <p>{msg.text}</p>
                     </div>
 
-                    {!isMine && showTime && <p className="time">{msg.createdAt}</p>}
+                    {!isMine && showTime && <p className="time">{formatKSTTime(msg.createdAt)}</p>}
                   </div>
                 </React.Fragment>
               );
