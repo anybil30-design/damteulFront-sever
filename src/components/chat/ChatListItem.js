@@ -9,31 +9,64 @@ function truncate(text, max = 28) {
 }
 
 /**
- * ✅ DB가 KST로 저장된 DATETIME("YYYY-MM-DD HH:mm:ss")를
- *    프론트에서 '이중 보정' 없이 안전하게 파싱
- * - "+09:00" 절대 붙이지 않음 (DB가 이미 KST면 붙이면 9시간 더해져 보일 수 있음)
- * - ISO(Z) 형태는 그대로 처리
+ * ✅ 어떤 환경에서도 동일한 "절대 시각(ms)"으로 변환
+ * - DB가 KST로 저장된 DATETIME("YYYY-MM-DD HH:mm:ss")이면 -> "KST로 확정"해서 epoch(ms) 생성
+ * - ISO(Z / +09:00 등) 형태면 -> new Date로 그대로 epoch(ms)
+ *
+ * 핵심: "타임존 없는 문자열"을 new Date로 그냥 파싱하지 말고,
+ *       우리가 'KST'라고 확정할 수 있는 형식은 직접 파싱해서 변환한다.
  */
-function parseDateSafe(v) {
+function toEpochMs(v) {
   if (!v) return null;
-  if (v instanceof Date) return v;
 
-  const s = String(v);
-
-  // "YYYY-MM-DD HH:mm:ss" -> "YYYY-MM-DDTHH:mm:ss" (로컬 시간으로 해석)
-  if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(s)) {
-    return new Date(s.replace(" ", "T"));
+  if (v instanceof Date) {
+    const t = v.getTime();
+    return Number.isNaN(t) ? null : t;
   }
 
-  // ISO("...Z", "+09:00") 등
-  return new Date(s);
+  const s = String(v).trim();
+  if (!s) return null;
+
+  // 1) DB DATETIME: "YYYY-MM-DD HH:mm:ss" (KST로 저장된 값)
+  let m = s.match(/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})$/);
+  if (m) {
+    const y = Number(m[1]);
+    const mo = Number(m[2]);
+    const d = Number(m[3]);
+    const hh = Number(m[4]);
+    const mm = Number(m[5]);
+    const ss = Number(m[6]);
+
+    // KST(+09:00) -> UTC epoch: hour에서 9 빼서 Date.UTC로 만든다
+    const utcMs = Date.UTC(y, mo - 1, d, hh - 9, mm, ss);
+    return Number.isNaN(utcMs) ? null : utcMs;
+  }
+
+  // 2) 타임존 없는 ISO 비슷한 문자열: "YYYY-MM-DDTHH:mm:ss" (Z/offset 없음)
+  //    이것도 서버가 KST 문자열로 준 케이스가 있을 수 있으니 KST로 확정 처리
+  m = s.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})$/);
+  if (m) {
+    const y = Number(m[1]);
+    const mo = Number(m[2]);
+    const d = Number(m[3]);
+    const hh = Number(m[4]);
+    const mm = Number(m[5]);
+    const ss = Number(m[6]);
+    const utcMs = Date.UTC(y, mo - 1, d, hh - 9, mm, ss);
+    return Number.isNaN(utcMs) ? null : utcMs;
+  }
+
+  // 3) ISO with Z/offset, RFC 등: new Date로 안전하게 epoch 생성 가능
+  const dt = new Date(s);
+  const t = dt.getTime();
+  return Number.isNaN(t) ? null : t;
 }
 
-function timeAgo(dateStr) {
-  const d = parseDateSafe(dateStr);
-  if (!d || Number.isNaN(d.getTime())) return "";
+function timeAgo(dateValue) {
+  const t = toEpochMs(dateValue);
+  if (!t) return "";
 
-  const diffMs = Date.now() - d.getTime();
+  const diffMs = Date.now() - t;
   const sec = Math.floor(diffMs / 1000);
   if (sec < 60) return "방금 전";
   const min = Math.floor(sec / 60);
@@ -71,6 +104,7 @@ const ChatListItem = ({ room }) => {
               <div className="chatTxt">
                 <div>
                   <h3>{room.otherNickname || "상대"}</h3>
+                  {/* ✅ 어떤 환경에서도 동일한 기준(절대시각 ms)으로 "n분 전" 계산 */}
                   <span>{timeAgo(room.lastMessageAt)}</span>
                 </div>
 
