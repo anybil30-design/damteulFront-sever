@@ -12,7 +12,7 @@ import { BiMessageSquareDetail } from "react-icons/bi";
 
 import 'swiper/css';
 import 'swiper/css/pagination';
-import './styles/commpost.scss';
+import './styles/commpost.css';
 
 const gradeIcons = {
   '1': '/images/level01.png', '2': '/images/level02.png', '3': '/images/level03.png',
