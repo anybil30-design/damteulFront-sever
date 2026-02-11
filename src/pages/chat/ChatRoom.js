@@ -7,12 +7,51 @@ import { getUserId } from "components/getUserId/getUserId";
 import api from "app/api/axios";
 import { API_ORIGIN } from "app/api/apiOrigin";
 
+/**
+ * ✅ DB가 KST로 저장된 DATETIME("YYYY-MM-DD HH:mm:ss")를
+ *    프론트에서 이중 보정 없이 안전하게 파싱
+ */
+function parseDateSafe(v) {
+  if (!v) return null;
+  if (v instanceof Date) return v;
+
+  const s = String(v);
+
+  // "YYYY-MM-DD HH:mm:ss" -> "YYYY-MM-DDTHH:mm:ss" (로컬=KST)
+  if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(s)) {
+    return new Date(s.replace(" ", "T"));
+  }
+
+  // ISO(Z) 등
+  return new Date(s);
+}
+
+/**
+ * ✅ createdAt이 없을 때만 쓰는 로컬 KST 문자열(형태 통일용)
+ * (가능하면 서버가 createdAt 내려주는 게 베스트)
+ */
+function nowKstDatetimeString() {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Seoul",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  }).formatToParts(new Date());
+
+  const get = (type) => parts.find((p) => p.type === type)?.value ?? "00";
+  return `${get("year")}-${get("month")}-${get("day")} ${get("hour")}:${get("minute")}:${get("second")}`;
+}
+
 /* =========================
    KST 포맷 유틸
 ========================= */
-function formatKSTTime(dateStr) {
-  if (!dateStr) return "";
-  const d = new Date(dateStr);
+function formatKSTTime(dateValue) {
+  const d = parseDateSafe(dateValue);
+  if (!d || Number.isNaN(d.getTime())) return "";
   return new Intl.DateTimeFormat("ko-KR", {
     timeZone: "Asia/Seoul",
     hour: "2-digit",
@@ -21,9 +60,10 @@ function formatKSTTime(dateStr) {
   }).format(d);
 }
 
-function formatKSTDateLabel(dateStr) {
-  if (!dateStr) return "";
-  const d = new Date(dateStr);
+function formatKSTDateLabel(dateValue) {
+  const d = parseDateSafe(dateValue);
+  if (!d || Number.isNaN(d.getTime())) return "";
+
   const s = new Intl.DateTimeFormat("ko-KR", {
     timeZone: "Asia/Seoul",
     year: "numeric",
@@ -36,9 +76,9 @@ function formatKSTDateLabel(dateStr) {
   return `${y}년 ${m}월 ${day}일`;
 }
 
-function getKSTYMD(dateStr) {
-  if (!dateStr) return "";
-  const d = new Date(dateStr);
+function getKSTYMD(dateValue) {
+  const d = parseDateSafe(dateValue);
+  if (!d || Number.isNaN(d.getTime())) return "";
   return new Intl.DateTimeFormat("en-CA", {
     timeZone: "Asia/Seoul",
     year: "numeric",
@@ -51,8 +91,10 @@ function getKSTYMD(dateStr) {
    메시지 그룹 판정
 ========================= */
 function isSameMinute(prevAt, currAt) {
-  const prev = new Date(prevAt);
-  const curr = new Date(currAt);
+  const prev = parseDateSafe(prevAt);
+  const curr = parseDateSafe(currAt);
+  if (!prev || !curr || Number.isNaN(prev.getTime()) || Number.isNaN(curr.getTime())) return false;
+
   return (
     prev.getFullYear() === curr.getFullYear() &&
     prev.getMonth() === curr.getMonth() &&
@@ -75,15 +117,13 @@ function isGroupEnd(curr, next) {
 }
 
 const ChatRoom = () => {
-
-  // ✅ outlet context가 undefined여도 안 죽게 방어
   const outlet = useOutletContext() || {};
   const setTitle = outlet.setTitle;
 
-  const { chat_id } = useParams(); // /chat/chatroom/:chat_id
+  const { chat_id } = useParams();
   const chatId = Number(chat_id);
   const myUserId = Number(getUserId());
-  console.log(myUserId);
+
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [sending, setSending] = useState(false);
@@ -105,21 +145,15 @@ const ChatRoom = () => {
       listRef.current.scrollTop = listRef.current.scrollHeight;
     }
   };
-  
-  // 제목 받아오기 기본값
+
   useEffect(() => {
     setTitle?.("채팅");
   }, [setTitle, chatId]);
 
-
-
-
-  // ✅ chatId 바뀌면 초기 스크롤 플래그 리셋
   useEffect(() => {
     didInitialScrollRef.current = false;
   }, [chatId]);
 
-  // ✅ 첫 로딩 / chatId 변경 시: 강제 맨 아래
   useLayoutEffect(() => {
     if (messages.length === 0) return;
     scrollToBottom(false);
@@ -128,7 +162,6 @@ const ChatRoom = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chatId, messages.length]);
 
-  // ✅ 이후 메시지 추가 시: 부드럽게 맨 아래
   useEffect(() => {
     if (messages.length === 0) return;
     if (!didInitialScrollRef.current) {
@@ -141,7 +174,6 @@ const ChatRoom = () => {
 
   const isSameKSTDate = (a, b) => getKSTYMD(a) === getKSTYMD(b);
 
-  // ✅ 메시지 불러오기
   useEffect(() => {
     const fetchMessages = async () => {
       if (!Number.isFinite(chatId) || chatId <= 0) return;
@@ -162,7 +194,6 @@ const ChatRoom = () => {
     fetchMessages();
   }, [chatId, myUserId]);
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const text = input.trim();
@@ -180,17 +211,19 @@ const ChatRoom = () => {
         alert(data?.message || "전송 실패");
         return;
       }
-  setMessages((prev) => [
-    ...prev,
-    {
-      id: data.message_id ?? Date.now(),
-      user_id: myUserId,
-      nickname: null,
-      profile: "defaultProfile.png",
-      text,
-      createdAt: data.createdAt || new Date().toISOString(),
-    },
-  ]);
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: data.message_id ?? Date.now(),
+          user_id: myUserId,
+          nickname: null,
+          profile: "defaultProfile.png",
+          text,
+          // ✅ ISO(Z)로 fallback하면 섞일 수 있어서, KST 문자열로 형태를 맞춤
+          createdAt: data.createdAt || nowKstDatetimeString(),
+        },
+      ]);
 
       setInput("");
       requestAnimationFrame(() => inputRef.current?.focus());
@@ -240,17 +273,13 @@ const ChatRoom = () => {
 
                     {!isMine && !showProfile && <div className="profilePlaceholder" />}
 
-                    {isMine && showTime && (
-                      <p className="time">{formatKSTTime(msg.createdAt)}</p>
-                    )}
+                    {isMine && showTime && <p className="time">{formatKSTTime(msg.createdAt)}</p>}
 
                     <div className="messageBox">
                       <p>{msg.text}</p>
                     </div>
 
-                    {!isMine && showTime && (
-                      <p className="time">{formatKSTTime(msg.createdAt)}</p>
-                    )}
+                    {!isMine && showTime && <p className="time">{formatKSTTime(msg.createdAt)}</p>}
                   </div>
                 </React.Fragment>
               );

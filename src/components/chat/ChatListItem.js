@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {API_ORIGIN} from "app/api/apiOrigin";
+import { API_ORIGIN } from "app/api/apiOrigin";
 
 function truncate(text, max = 28) {
   const s = (text ?? "").trim();
@@ -8,9 +8,31 @@ function truncate(text, max = 28) {
   return s.length > max ? s.slice(0, max) + "..." : s;
 }
 
+/**
+ * ✅ DB가 KST로 저장된 DATETIME("YYYY-MM-DD HH:mm:ss")를
+ *    프론트에서 '이중 보정' 없이 안전하게 파싱
+ * - "+09:00" 절대 붙이지 않음 (DB가 이미 KST면 붙이면 9시간 더해져 보일 수 있음)
+ * - ISO(Z) 형태는 그대로 처리
+ */
+function parseDateSafe(v) {
+  if (!v) return null;
+  if (v instanceof Date) return v;
+
+  const s = String(v);
+
+  // "YYYY-MM-DD HH:mm:ss" -> "YYYY-MM-DDTHH:mm:ss" (로컬 시간으로 해석)
+  if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(s)) {
+    return new Date(s.replace(" ", "T"));
+  }
+
+  // ISO("...Z", "+09:00") 등
+  return new Date(s);
+}
+
 function timeAgo(dateStr) {
-  if (!dateStr) return "";
-  const d = new Date(dateStr);
+  const d = parseDateSafe(dateStr);
+  if (!d || Number.isNaN(d.getTime())) return "";
+
   const diffMs = Date.now() - d.getTime();
   const sec = Math.floor(diffMs / 1000);
   if (sec < 60) return "방금 전";
@@ -29,17 +51,15 @@ function badgeText(n) {
 }
 
 const ChatListItem = ({ room }) => {
-  // 프로필 주소
   const profileSrc =
-    room?.otherProfile!=="defaultProfile.png"?
-        `${API_ORIGIN}${room.otherProfile}`
+    room?.otherProfile !== "defaultProfile.png"
+      ? `${API_ORIGIN}${room.otherProfile}`
       : `${process.env.PUBLIC_URL}/images/defaultProfile.png`;
 
   const badge = badgeText(room?.unreadCount);
 
   return (
     <li>
-      {/* ✅ 여기만 변경 */}
       <Link to={`/chat/chatroom/${room.chat_id}`} title="채팅바로가기">
         <div className="chatParent">
           <div className="chatContWrap">

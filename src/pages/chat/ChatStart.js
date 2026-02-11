@@ -1,4 +1,3 @@
-// src/pages/chat/ChatStart.jsx (경로는 네 프로젝트 구조에 맞게 조정)
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams, useOutletContext } from "react-router-dom";
 import { IoIosSend } from "react-icons/io";
@@ -8,23 +7,21 @@ import { getUserId } from "components/getUserId/getUserId";
 import api from "app/api/axios";
 
 const ChatStart = () => {
-  // ✅ outlet context가 undefined여도 안 죽게 방어
   const outlet = useOutletContext() || {};
   const setTitle = outlet.setTitle;
 
   const navigate = useNavigate();
-  const { goods_id } = useParams(); // /chat/start/:goods_id
+  const { goods_id } = useParams();
   const goodsId = Number(goods_id);
 
-  const myUserId = Number(getUserId()); // buyer_id로 사용
+  const myUserId = Number(getUserId());
 
   const [input, setInput] = useState("");
-  const [checking, setChecking] = useState(true); // 방 존재 확인중
+  const [checking, setChecking] = useState(true);
   const [sending, setSending] = useState(false);
 
   const inputRef = useRef(null);
 
-  // 1) 진입 시: 이미 방이 있으면 바로 chatRoom으로 이동
   useEffect(() => {
     const checkRoom = async () => {
       if (!Number.isFinite(goodsId) || goodsId <= 0) {
@@ -38,14 +35,10 @@ const ChatStart = () => {
 
       try {
         const { data } = await api.get("/api/chat/room", {
-          params: {
-            goods_id: goodsId,
-            buyer_id: myUserId,
-          },
+          params: { goods_id: goodsId, buyer_id: myUserId },
         });
 
         if (data?.success && data?.chat_id) {
-          // ✅ 기존 방 존재 -> 바로 이동
           navigate(`/chat/chatroom/${data.chat_id}`, { replace: true });
           return;
         }
@@ -60,12 +53,10 @@ const ChatStart = () => {
     checkRoom();
   }, [goodsId, myUserId, navigate]);
 
-  // 제목 받아오기 기본값
-    useEffect(() => {
-      setTitle?.("채팅");
-    }, [setTitle]);
+  useEffect(() => {
+    setTitle?.("채팅");
+  }, [setTitle]);
 
-  // 2) 첫 메시지 전송 (방 생성 + 첫 메시지 저장)
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -94,8 +85,8 @@ const ChatStart = () => {
         return;
       }
 
-      // ✅ 방 생성/확보 되었으니 채팅방으로 이동
-      navigate(`/chat/chatRoom/${data.chat_id}`, { replace: true });
+      // ✅ 여기 오타 수정: chatRoom -> chatroom
+      navigate(`/chat/chatroom/${data.chat_id}`, { replace: true });
     } catch (err) {
       console.error("send-first error:", err);
       alert("서버 오류");
@@ -140,10 +131,7 @@ const ChatStart = () => {
                   disabled={checking || sending}
                 />
 
-                <button
-                  type="submit"
-                  disabled={checking || sending || !input.trim()}
-                >
+                <button type="submit" disabled={checking || sending || !input.trim()}>
                   <IoIosSend />
                 </button>
               </div>
