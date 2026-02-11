@@ -154,11 +154,6 @@ const ChatListItem = ({ room }) => {
                 </div>
 
                 <p>{truncate(room.lastText, 28)}</p>
-
-                {/* 디버깅용: 원본 보고 싶으면 잠깐 켜두기 */}
-                {/* <small style={{ display: "block", opacity: 0.6 }}>
-                  raw: {String(room.lastMessageAt)}
-                </small> */}
               </div>
             </div>
 
