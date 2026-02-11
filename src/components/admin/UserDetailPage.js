@@ -1,181 +1,173 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import styles from "../admin/styles/UserDetailPage.module.css";
-import { gradeInfo } from "./constants/gradeInfo";
-import api from "app/api/axios";
-import { handleDelete } from "./delete/handleDelete";
+import React from "react";
+import { Link } from "react-router-dom";
+import { API_ORIGIN } from "app/api/apiOrigin";
 
+function truncate(text, max = 28) {
+  const s = (text ?? "").trim();
+  if (!s) return "";
+  return s.length > max ? s.slice(0, max) + "..." : s;
+}
 
-const UserDetailPage = () => {
-  const navigate = useNavigate();
-  const { user_id } = useParams();
+/**
+ * ✅ 어떤 환경에서도 동일한 "절대 시각(ms)"으로 변환
+ *
+ * - 타임존 없는 문자열은 "KST"로 확정해서 epoch로 변환
+ * - 타임존 있는 문자열(Z, +09:00 등)은 기본적으로 new Date로 파싱하되,
+ *   ✅ "Z인데 실제론 KST"처럼 잘못 직렬화된 케이스는 미래시간이면 KST로 보정
+ */
+function toEpochMs(v) {
+  if (!v) return null;
 
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  // Date 객체면 그대로
+  if (v instanceof Date) {
+    const t = v.getTime();
+    return Number.isNaN(t) ? null : t;
+  }
 
-  // 서버에서 유저 상세 불러오기
-  useEffect(() => {
-    const getUserDetail = async () => {
-      try {
-        setLoading(true);
-        setError("");
+  const s = String(v).trim();
+  if (!s) return null;
 
-        const { data } = await api.get(`/api/admin/users/${user_id}`);
+  // ---- 1) "YYYY-MM-DD HH:mm:ss(.SSS)?"  -> KST 확정
+  let m = s.match(
+    /^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})(?:\.(\d{1,3}))?$/
+  );
+  if (m) {
+    const y = Number(m[1]);
+    const mo = Number(m[2]);
+    const d = Number(m[3]);
+    const hh = Number(m[4]);
+    const mm = Number(m[5]);
+    const ss = Number(m[6]);
+    const ms = m[7] ? Number(m[7].padEnd(3, "0")) : 0;
 
-        if (!data?.success) {
-          setError(data?.message || "유저 정보를 불러오지 못했습니다.");
-          setUser(null);
-          return;
-        }
+    // KST(+09:00) -> UTC epoch : hour - 9
+    const utcMs = Date.UTC(y, mo - 1, d, hh - 9, mm, ss, ms);
+    return Number.isNaN(utcMs) ? null : utcMs;
+  }
 
-        setUser(data.user);
-      } catch (err) {
-        console.error(err);
-        setError(err?.response?.data?.message || err?.message || "서버 오류 발생");
-      } finally {
-        setLoading(false);
+  // ---- 2) "YYYY-MM-DDTHH:mm:ss(.SSS)?" (타임존 없음) -> KST 확정
+  m = s.match(
+    /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.(\d{1,3}))?$/
+  );
+  if (m) {
+    const y = Number(m[1]);
+    const mo = Number(m[2]);
+    const d = Number(m[3]);
+    const hh = Number(m[4]);
+    const mm = Number(m[5]);
+    const ss = Number(m[6]);
+    const ms = m[7] ? Number(m[7].padEnd(3, "0")) : 0;
+
+    const utcMs = Date.UTC(y, mo - 1, d, hh - 9, mm, ss, ms);
+    return Number.isNaN(utcMs) ? null : utcMs;
+  }
+
+  // ---- 2-1) "....Z" 형태인데, 이게 DB(KST) 시간을 그대로 가져오며 Z가 붙은 케이스 보정
+  // 예: 2026-02-11T15:31:55.000Z  (실제로는 KST 15:31:55인데 Z가 붙음)
+  const zMatch = s.match(
+    /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.(\d{1,3}))?Z$/
+  );
+
+  // ---- 3) 타임존이 포함된 ISO/RFC 형태면 new Date로 절대시각 생성
+  const dt = new Date(s);
+  const t = dt.getTime();
+  if (!Number.isNaN(t)) {
+    // ✅ 만약 "Z가 붙어있는데" 파싱 결과가 현재보다 미래라면,
+    //    Z가 잘못 붙은 KST 직렬화 가능성이 매우 큼 -> KST로 재해석
+    if (zMatch) {
+      const now = Date.now();
+      const diff = t - now;
+
+      // 1분 이상 미래면 "잘못된 Z"로 판단(필요하면 10초/5분으로 조정 가능)
+      if (diff > 60 * 1000) {
+        const y = Number(zMatch[1]);
+        const mo = Number(zMatch[2]);
+        const d = Number(zMatch[3]);
+        const hh = Number(zMatch[4]);
+        const mm = Number(zMatch[5]);
+        const ss = Number(zMatch[6]);
+        const ms = zMatch[7] ? Number(zMatch[7].padEnd(3, "0")) : 0;
+
+        // "Z"를 무시하고 KST로 확정해서 epoch 계산
+        const utcMs = Date.UTC(y, mo - 1, d, hh - 9, mm, ss, ms);
+        return Number.isNaN(utcMs) ? t : utcMs;
       }
-    };
+    }
 
-    if (user_id) getUserDetail();
-  }, [user_id]);
+    return t;
+  }
 
+  return null;
+}
 
-  // 상태 배지 클래스
+function timeAgo(dateValue) {
+  const t = toEpochMs(dateValue);
+  if (!t) return "";
 
+  const diffMs = Date.now() - t;
 
-  if (loading) return <div className={styles.pageWrapper}>로딩중...</div>;
-  if (error) return <div className={styles.pageWrapper}>{error}</div>;
-  if (!user) return <div className={styles.pageWrapper}>사용자를 찾을 수 없습니다.</div>;
+  // 미래 시간이 들어오면(서버 직렬화 문제로 +9h 등) 최소 방어
+  if (diffMs < 0) return "방금 전";
 
-  // ✅ 서버 데이터 키 맞추기
-  const idValue = user.user_id ?? user.id;
-  const nicknameValue = user.user_nickname ?? user.nickname;
-  const reportValue = user.reported_count ?? user.reportScore ?? 0;
-  const createdAtValue = user.created_at ?? user.createdAt;
-  const statusValue = user.status;
-  console.log(statusValue);
-  // ✅ 등급 값 (level_code 기준)
-  const levelCodeValue = String(user.level_code ?? user.grade ?? ""); // '0'~'5' 형태로 맞춤
-  const currentGradeData = gradeInfo[levelCodeValue]; // 이미지/이름 가져오기
-  const gradeNameValue = currentGradeData?.name ?? levelCodeValue; // 혹시 gradeInfo에 없으면 코드라도 표시
+  const sec = Math.floor(diffMs / 1000);
+  if (sec < 60) return "방금 전";
 
-  const statusKey =
-    statusValue === "활동중"
-      ? "ingUser"
-      : statusValue === "정지"
-        ? "stopUser"
-        : "noUser";
+  const min = Math.floor(sec / 60);
+  if (min < 60) return `${min}분 전`;
+
+  const hour = Math.floor(min / 60);
+  if (hour < 24) return `${hour}시간 전`;
+
+  const day = Math.floor(hour / 24);
+  return `${day}일 전`;
+}
+
+function badgeText(n) {
+  const v = Number(n || 0);
+  if (v <= 0) return "";
+  return v > 99 ? "99+" : String(v);
+}
+
+const ChatListItem = ({ room }) => {
+  const profileSrc =
+    room?.otherProfile !== "defaultProfile.png"
+      ? `${API_ORIGIN}${room.otherProfile}`
+      : `${process.env.PUBLIC_URL}/images/defaultProfile.png`;
+
+  const badge = badgeText(room?.unreadCount);
+
   return (
-    <div className={styles.pageWrapper}>
-      <div className={styles.wrapper}>
-        {/* 헤더 */}
-        <div className={styles.adminHeader}>
-          <h2 className={styles.adminTitle}>사용자 상세 정보</h2>
-          <span className={styles.adminDesc}>회원 user_id #{idValue} 상세 정보</span>
-        </div>
+    <li>
+      <Link to={`/chat/chatroom/${room.chat_id}`} title="채팅바로가기">
+        <div className="chatParent">
+          <div className="chatContWrap">
+            <div className="chatCont">
+              <div className="chatImg">
+                <img src={profileSrc} alt="상대 프로필" />
+              </div>
 
-        {/* 카드 영역 */}
-        <div className={styles.userEditCard}>
-          {/* 프로필 */}
-          <div className={styles.profile}>
-            <img
-              src="/images/defaultProfile.png"
-              alt="user"
-              className={styles.profileImg}
-            />
-            <div>
-              <strong>ID</strong> {idValue} <br />
-              <strong>닉네임</strong> {nicknameValue}
-            </div>
-          </div>
-
-          {/* 기본 정보 */}
-          <section className={styles.formSection}>
-            <h4>기본 정보</h4>
-
-            <div className={styles.inputGroup}>
-              <strong>ID:</strong>
-              <input value={idValue} disabled className={styles.disabledInput} />
-            </div>
-
-            <div className={styles.inputGroup}>
-              <strong>닉네임</strong>
-              <input value={nicknameValue} disabled className={styles.disabledInput} />
-            </div>
-
-            {/* ✅ 등급: select 제거 → input으로 출력 */}
-            <div className={styles.inputGroup}>
-              <strong>등급</strong>
-              <input
-                type="text"
-                value={gradeNameValue}
-                disabled
-                className={styles.disabledInput}
-              />
-
-              {currentGradeData && (
-                <div className={styles.userSummary}>
-                  <img
-                    src={currentGradeData.img}
-                    alt={gradeNameValue}
-                    className={styles.gradeImg}
-                  />
+              <div className="chatTxt">
+                <div>
+                  <h3>{room.otherNickname || "상대"}</h3>
+                  {/* ✅ "Z가 붙어도" 미래시간이면 KST로 재해석해서 정상 표시 */}
+                  <span>{timeAgo(room.lastMessageAt)}</span>
                 </div>
-              )}
+
+                <p>{truncate(room.lastText, 28)}</p>
+
+                {/* 디버깅용: 원본 보고 싶으면 잠깐 켜두기 */}
+                {/* <small style={{ display: "block", opacity: 0.6 }}>
+                  raw: {String(room.lastMessageAt)}
+                </small> */}
+              </div>
             </div>
 
-            <div className={styles.inputGroup}>
-              <strong>신고 점수</strong>
-              <input
-                type="number"
-                value={reportValue}
-                disabled
-                className={styles.disabledInput}
-              />
-            </div>
-
-            <div className={styles.inputGroup}>
-              <strong>가입일</strong>
-              <input
-                type="text"
-                value={(createdAtValue || "").slice(0, 10)}
-                disabled
-                className={styles.disabledInput}
-              />
-            </div>
-          </section>
-        </div>
-
-        <section className={styles.formSection}>
-          <strong>계정 상태</strong>
-          <div className={styles.statusWrapper}>
-            <span
-              className={`${styles.statusBadge} ${styles[statusKey]}`}
-            >
-              {statusValue}
-            </span>
+            {badge && <span className="chatBadge">{badge}</span>}
           </div>
-        </section>
-
-        {/* ✅ 하단 버튼: 저장 → 확인 */}
-        <div className={styles.actionButtons}>
-          <button
-            className={styles.primary}
-            onClick={() => { window.close(); }}
-          >
-            확인
-          </button>
-
-          {/* 삭제 기능도 없앨 거면 이 버튼과 handleDelete 함수도 같이 삭제 */}
-          <button className={styles.danger} onClick={() => handleDelete(Number(user_id), '유저정보를', setError, 'users')}>
-            삭제
-          </button>
         </div>
-      </div>
-    </div>
+      </Link>
+    </li>
   );
 };
 
-export default UserDetailPage;
+export default ChatListItem;
