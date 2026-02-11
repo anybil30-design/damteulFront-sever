@@ -1,1 +1,1 @@
-export const API_ORIGIN = "http://localhost:9070";
+export const API_ORIGIN = "https://port-0-damteulback-server-mlhcddsk6f7f8eac.sel3.cloudtype.app";
