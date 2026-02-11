@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { AiFillTag } from "react-icons/ai";
 import App from 'app/api/axios';
-import './styles/commtag.scss';
+import './styles/commtag.css';
 import { getUserId } from 'components/getUserId/getUserId';
 
 const CommTag = () => {
