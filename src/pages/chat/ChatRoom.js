@@ -21,7 +21,7 @@ function parseDateSafe(v) {
 
   // "YYYY-MM-DD HH:mm:ss" (DB DATETIME) -> "YYYY-MM-DDTHH:mm:ss+09:00"
   if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(s)) {
-    return new Date(s.replace(" ", "T") + "+09:00");
+    return new Date(s.replace(" ", "T"));
   }
 
   // ISO(Z) 등은 그대로 (서버가 UTC(Z)로 주면 이쪽으로 들어옴)
