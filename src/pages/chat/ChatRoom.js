@@ -11,34 +11,29 @@ import { API_ORIGIN } from "app/api/apiOrigin";
  * ⚠️ 기존 parseDateSafe는 Date 파싱 시 환경에 따라 UTC로 오해되어 +9시간 문제가 날 수 있음.
  * 그래서 DB DATETIME("YYYY-MM-DD HH:mm:ss")는 Date로 바꾸지 않고 "문자열 그대로" 유지.
  */
-function parseDateSafe(v) {
-  if (!v) return null;
-  if (v instanceof Date) return v;
-
-  const s = String(v);
-
-  // DB DATETIME: "YYYY-MM-DD HH:mm:ss" -> 문자열 그대로 반환
-  if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(s)) {
-    return s;
-  }
-
-  // 기타: ISO(Z), timestamp 등은 Date로 fallback
-  const d = new Date(s);
-  return Number.isNaN(d.getTime()) ? null : d;
-}
-
-/** =========================
- * ✅ 문자열 우선 추출 유틸 (타임존 이슈 원천 차단)
- * - createdAt이 DB DATETIME(KST) 문자열이면, Date 변환 없이 "그대로" 사용
- * - ISO(Z) 등만 Date로 fallback
- * ========================= */
 function extractYMD(v) {
   if (!v) return "";
+
+  // 🔥 ISO(Z) 또는 offset 포함 → 반드시 Date 변환
+  if (typeof v === "string" && v.includes("T")) {
+    const d = new Date(v);
+    if (!Number.isNaN(d.getTime())) {
+      return new Intl.DateTimeFormat("en-CA", {
+        timeZone: "Asia/Seoul",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      }).format(d);
+    }
+  }
+
+  // 🔥 DB DATETIME 문자열 ("YYYY-MM-DD HH:mm:ss")
   if (typeof v === "string") {
     const m = v.match(/^(\d{4})-(\d{2})-(\d{2})/);
     if (m) return `${m[1]}-${m[2]}-${m[3]}`;
   }
 
+  // fallback (timestamp 등)
   const d = v instanceof Date ? v : new Date(v);
   if (Number.isNaN(d.getTime())) return "";
 
@@ -53,30 +48,26 @@ function extractYMD(v) {
 function extractHM(v) {
   if (!v) return "";
 
-  if (typeof v === "string") {
-    // "YYYY-MM-DD HH:mm:ss"
-    let m = v.match(/^\d{4}-\d{2}-\d{2}\s(\d{2}):(\d{2}):\d{2}/);
-    if (m) return `${m[1]}:${m[2]}`;
-
-    // "YYYY-MM-DDTHH:mm:ss" (Z/offset 유무 상관없이 일단 문자열에서 시:분만)
-    m = v.match(/T(\d{2}):(\d{2}):\d{2}/);
-    if (m) return `${m[1]}:${m[2]}`;
-
-    // 이미 "HH:mm"
-    m = v.match(/^(\d{2}):(\d{2})$/);
-    if (m) return v;
+  // 🔥 ISO(Z) 또는 offset 포함이면 반드시 Date 변환
+  if (typeof v === "string" && v.includes("T")) {
+    const d = new Date(v);
+    if (!Number.isNaN(d.getTime())) {
+      return new Intl.DateTimeFormat("ko-KR", {
+        timeZone: "Asia/Seoul",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      }).format(d);
+    }
   }
 
-  // fallback: Date로 포맷 (ISO Z 등)
-  const d = v instanceof Date ? v : new Date(v);
-  if (Number.isNaN(d.getTime())) return "";
+  // DB DATETIME 문자열
+  if (typeof v === "string") {
+    const m = v.match(/^\d{4}-\d{2}-\d{2}\s(\d{2}):(\d{2}):\d{2}/);
+    if (m) return `${m[1]}:${m[2]}`;
+  }
 
-  return new Intl.DateTimeFormat("ko-KR", {
-    timeZone: "Asia/Seoul",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  }).format(d);
+  return "";
 }
 
 /**
