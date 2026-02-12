@@ -52,7 +52,7 @@ const Nanum = () => {
       return `${hours}시간 ${minutes}분 남음`;
     };
 
-    console.log(list.end_nanum[0]);
+
   return (
     <main>
       <section style={{marginTop:'60px', marginBottom:'80px', paddingBottom:'60px'}}>
