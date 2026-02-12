@@ -33,15 +33,26 @@ const Nanum = () => {
     },[filter]);
 
     // 타이머 설정
-    const getRemainingTime = (endTime) =>{
-      const remain = new Date(endTime) - new Date();
+    const getRemainingTime = (endTime) => {
+      if (!endTime) return "";
+
+      const utcTime = new Date(endTime);
+
+      // KST 보정 (+9시간)
+      const kstTime = new Date(utcTime.getTime() + (9 * 60 * 60 * 1000));
+
+      const now = new Date();
+      const remain = kstTime - now;
+
       if (remain <= 0) return "종료됨";
 
-      const hours = Math.floor(remain / (1000*60*60));
-      const minutes = Math.floor((remain % (1000*60*60)) / (1000*60));
-      return `${hours}시간 ${minutes}분 남음`;
-    }
+      const hours = Math.floor(remain / (1000 * 60 * 60));
+      const minutes = Math.floor((remain % (1000 * 60 * 60)) / (1000 * 60));
 
+      return `${hours}시간 ${minutes}분 남음`;
+    };
+
+    console.log(list.end_nanum[0]);
   return (
     <main>
       <section style={{marginTop:'60px', marginBottom:'80px', paddingBottom:'60px'}}>
