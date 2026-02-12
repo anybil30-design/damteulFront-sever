@@ -9,13 +9,12 @@ function AdminSidebar() {
 
   // 로그아웃
   const handleLogout = () => {
-    if(confirm('로그아웃 하시겠습니까?')){
+    if(window.confirm('로그아웃 하시겠습니까?')){
       localStorage.removeItem("admin_info");
       localStorage.removeItem("admin_token");
       // window.location.href = "/admin/login";
       navigate('/admin/login', {replace:true});
     }
-
   };
 
   return (
