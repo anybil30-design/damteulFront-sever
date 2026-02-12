@@ -15,8 +15,8 @@ import 'swiper/css/pagination';
 import './styles/commpost.css';
 
 const gradeIcons = {
-  '1': '/images/level01.png', '2': '/images/level02.png', '3': '/images/level03.png',
-  '4': '/images/level04.png', '5': '/images/level05.png'
+  '0': '/images/level01.png', '1': '/images/level02.png', '2': '/images/level03.png',
+  '3': '/images/level04.png', '4': '/images/level05.png'
 };
 
 const IMAGE_BASE_URL = "https://port-0-damteulback-server-mlhcddsk6f7f8eac.sel3.cloudtype.app/uploads/community/";
@@ -107,7 +107,7 @@ const CommPost = () => {
       <main className="commPostPage">
         <header className="postHeader">
           <div className="userInfo">
-            <img src={post.profile || "/images/defaultProfile.png"} alt="profile" />
+            <img src={post.profile || `${process.env.PUBLIC_URL}/images/defaultProfile.png`} alt="profile" />
             <div className="nameWrap">
               <span className="nickname">{post.user_nickname}</span>
               <img src={gradeIcons[String(post.level_code)] || gradeIcons['1']} alt="lv" className="gradeBadge" />

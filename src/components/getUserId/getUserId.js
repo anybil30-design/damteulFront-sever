@@ -9,7 +9,7 @@ export const getUserId = () => {
 
 	try{
 		const decoded = jwtDecode(token);
-		console.log("getUserId: 디코딩 성공", decoded);
+		// console.log("getUserId: 디코딩 성공", decoded);
 		return decoded.user_id; //토큰에 담긴 ID 반환
 	}catch(error){
 		console.error("토큰 파싱 에러 : ", error);

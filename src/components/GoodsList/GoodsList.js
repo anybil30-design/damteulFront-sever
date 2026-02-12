@@ -11,25 +11,19 @@ import { API_ORIGIN } from 'app/api/apiOrigin';
 
 function GoodsList({linkTo, title, status, price,timer, soldout,likeCount, img }) 
 {
-	const imgBase = API_ORIGIN;
-	// const imgSrc = img ? `${imgBase}${img}` : 'https://placehold.co/130x130';
-
 	const getImgSrc = () => {
 		if (!img) return 'https://placehold.co/130x130';
-		if (img.startsWith('http') || img.startsWith('/images') || img.startsWith('static') || img.startsWith('/uploads')) {
-      return img;
-    }
-    return `${imgBase}${img}`;
+		return `${API_ORIGIN}${img}`;
   };
 
-  const imgSrc = getImgSrc();
+	const useSrc = getImgSrc();
 	return (
 		<div>
 			<Link 
 			to={linkTo}
 			className='goodsList'>
 							{/* 상품이미지 영역 */}
-						<img src={imgSrc} alt='product' onError={(e) => { e.target.src = 'https://placehold.co/130x130'; }}/>
+						<img src={useSrc} alt='product' onError={(e) => { e.target.src = 'https://placehold.co/130x130'; }}/>
 							<div className='goodsListArea'>
 								{/* 텍스트 영역 */}
 								<div className='goodsListInfo'>
