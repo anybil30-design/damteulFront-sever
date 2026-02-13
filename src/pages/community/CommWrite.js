@@ -21,7 +21,7 @@ const CommWrite = () => {
   
   const userId = getUserId();
 
-  const IMAGE_BASE_URL = "http://localhost:9070/uploads/community/";
+  const IMAGE_BASE_URL = "https://port-0-damteulback-server-mlhcddsk6f7f8eac.sel3.cloudtype.app/uploads/community/";
 
   // ✅ 초기 로드 시 기존 이미지 세팅 (수정 모드일 때)
   useEffect(() => {
