@@ -127,7 +127,7 @@ const Community = () => {
                     <img 
                       src={`${IMAGE_BASE_URL}${feed.image_url}`}
                       alt={feed.title}
-                      onError={(e) => { e.target.src = "/images/defaultPost.png"; }}
+                      onError={(e) => { e.target.src = 'https://placehold.co/130x130'; }}
                     />
                     <div className="feedInfo">
                       <span><IoMdHeart /> {feed.heart || 0}</span>

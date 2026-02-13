@@ -134,7 +134,7 @@ const CommPost = () => {
             {images.map((img, idx) => (
               <SwiperSlide key={img.image_id || idx}>
                 <div className="imgWrap">
-                  <img src={`${IMAGE_BASE_URL}${img.image_url}`} alt="post" />
+                  <img src={`${IMAGE_BASE_URL}${img.image_url}`} alt="post" onError={(e) => { e.target.src = 'https://placehold.co/130x130'; }} />
                   <button className="tagToggleBtn" onClick={() => setShowTags(!showTags)}><AiFillTag /></button>
                   {showTags && img.tags?.map((tag, tIdx) => (
                     <div 
